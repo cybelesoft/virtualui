@@ -2,7 +2,7 @@
 
 Thinfinity VirtualUI is a software solution that enables developers to transform their Windows applications to dual-platform, Windows/Web apps.
 
-If you want to know more about *Thinfinity VirtualUI*, please visit http://www.cybelesoft.com/thinfinity/virtualui/.
+If you want to know more about *Thinfinity VirtualUI*, please visit https://www.cybelesoft.com/thinfinity/virtualui/.
 
 ##Repository Content
 
