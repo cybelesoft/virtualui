@@ -70,7 +70,7 @@ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  FQz.PrintPDF('assets/pdf_sample.pdf');
+  FQz.PrintPDF(ExpandFilename('vui-qz\assets\pdf_sample.pdf'));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -80,7 +80,7 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-  PrintZPLFile(ExpandFilename('..\web\assets\zpl_sample.txt'));
+  PrintZPLFile(ExpandFilename('vui-qz\assets\zpl_sample.txt'));
 end;
 
 procedure TForm1.cmbPrintersClick(Sender: TObject);

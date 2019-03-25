@@ -162,11 +162,14 @@ end;
 *   AFileName: string - Name of the file to print
 }
 procedure TVuiQz.PrintPDF(AFilename:string);
+var
+  SafeURL: string;
 begin
+  SafeURL := VirtualUI.HTMLDoc.GetSafeURL(AFilename, 10);
   FQzRo.Events['print']
     .ArgumentAsString('printer',FDefaultPrinter)
     .ArgumentAsString('contentType','pdf')
-    .ArgumentAsString('data',AFilename)
+    .ArgumentAsString('data',SafeURL)
     .Fire;
 end;
 
