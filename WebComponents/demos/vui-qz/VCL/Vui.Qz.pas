@@ -163,9 +163,12 @@ end;
 }
 procedure TVuiQz.PrintPDF(AFilename:string);
 var
-  SafeURL: string;
+  SafeURL, Cookie: string;
 begin
   SafeURL := VirtualUI.HTMLDoc.GetSafeURL(AFilename, 10);
+  Cookie := VirtualUI.BrowserInfo.GetCookie('GWSID');
+  if Cookie <> '' then
+    SafeURL := SafeURL + '?_gwsid=' + Cookie;
   FQzRo.Events['print']
     .ArgumentAsString('printer',FDefaultPrinter)
     .ArgumentAsString('contentType','pdf')
