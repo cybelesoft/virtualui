@@ -50,7 +50,7 @@ namespace QzPrint
 
         private void bInit_Click(object sender, EventArgs e)
         {
-            qz.Init();
+            qz.Init("");
         }
 
         private void bSettings_Click(object sender, EventArgs e)
