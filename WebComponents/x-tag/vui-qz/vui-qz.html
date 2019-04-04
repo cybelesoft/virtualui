@@ -13,6 +13,7 @@
     
     function initQZ() {
         var connecting = false;
+        var runtimeCert = null;
     
         function displayError(e) {
             alert(e);
@@ -82,7 +83,8 @@
             qz.print(qzsettings, printData).catch(displayError);
         });
     
-        jsro.on('qzro', 'init', function (coords) {
+        jsro.on('qzro', 'init', function (certificate) {
+            runtimeCert = (typeof certificate == "undefined" || certificate == null || certificate === "")? null : certificate;
             launchQZ();
             postInit();
         });    
@@ -95,6 +97,12 @@
             //        resolve();
         
             //Alternate method 2 - direct
+            if (runtimeCert)
+            {
+              resolve(runtimeCert);
+              runtimeCert = null;
+              return;
+            }
             resolve("-----BEGIN CERTIFICATE-----\n" +
                     "MIIFAzCCAuugAwIBAgICEAIwDQYJKoZIhvcNAQEFBQAwgZgxCzAJBgNVBAYTAlVT\n" +
                     "MQswCQYDVQQIDAJOWTEbMBkGA1UECgwSUVogSW5kdXN0cmllcywgTExDMRswGQYD\n" +

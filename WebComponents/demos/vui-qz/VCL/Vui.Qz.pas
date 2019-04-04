@@ -23,7 +23,7 @@ type
   public
     constructor Create;
     destructor Destroy;override;
-    procedure Init;
+    procedure Init(ACertificate: string = '');
     procedure BeginDoc;
     procedure EndDoc;
     procedure PrintPDF(AFilename: string);
@@ -93,7 +93,8 @@ begin
             FOnStateChange(Self);
         end))
     .AsString := '';
-  FQzRo.Events.Add('init');
+  FQzRo.Events.Add('init')
+    .AddArgument('certificate',JSDT_STRING);
   FQzRo.Events.Add('print')
     .AddArgument('printer',JSDT_STRING)
     .AddArgument('contentType',JSDT_STRING)
@@ -148,9 +149,11 @@ end;
 * =============
 * Fires the 'init' jsRO message event to send it to the browser.
 }
-procedure TVuiQz.Init;
+procedure TVuiQz.Init(ACertificate: string = '');
 begin
-  FQzRo.Events['init'].Fire;
+  FQzRo.Events['init']
+    .ArgumentAsString('certificate',ACertificate)
+    .Fire;
 end;
 
 { =================
