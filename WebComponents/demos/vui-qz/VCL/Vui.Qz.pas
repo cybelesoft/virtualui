@@ -23,7 +23,7 @@ type
   public
     constructor Create;
     destructor Destroy;override;
-    procedure Init(ACertificate: string = '');
+    procedure Init(ACertificate: string = ''; APrivateKey: string = '');
     procedure BeginDoc;
     procedure EndDoc;
     procedure PrintPDF(AFilename: string);
@@ -94,7 +94,8 @@ begin
         end))
     .AsString := '';
   FQzRo.Events.Add('init')
-    .AddArgument('certificate',JSDT_STRING);
+    .AddArgument('certificate',JSDT_STRING)
+    .AddArgument('privateKey',JSDT_STRING);
   FQzRo.Events.Add('print')
     .AddArgument('printer',JSDT_STRING)
     .AddArgument('contentType',JSDT_STRING)
@@ -149,10 +150,11 @@ end;
 * =============
 * Fires the 'init' jsRO message event to send it to the browser.
 }
-procedure TVuiQz.Init(ACertificate: string = '');
+procedure TVuiQz.Init(ACertificate, APrivateKey: string);
 begin
   FQzRo.Events['init']
     .ArgumentAsString('certificate',ACertificate)
+    .ArgumentAsString('privateKey',APrivateKey)
     .Fire;
 end;
 

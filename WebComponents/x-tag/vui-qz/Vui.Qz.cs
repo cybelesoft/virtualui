@@ -54,7 +54,8 @@ namespace Cybele.Thinfinity.WebComponents
             m_qz.Properties.Add("printers").AsString = "";
             m_qz.Properties.Add("default").AsString = "";
             m_qz.Events.Add("init")
-                .AddArgument("certificate", IJSDataType.JSDT_STRING);
+                .AddArgument("certificate", IJSDataType.JSDT_STRING)
+                .AddArgument("privateKey", IJSDataType.JSDT_STRING);
             m_qz.Events.Add("print")
                 .AddArgument("printer", IJSDataType.JSDT_STRING)
                 .AddArgument("contentType", IJSDataType.JSDT_STRING)
@@ -102,10 +103,11 @@ namespace Cybele.Thinfinity.WebComponents
                 m_qz.Properties["default"].AsString = value;
             }
         }
-        public void Init(String certificate)
+        public void Init(String certificate, String privateKey)
         {
             m_qz.Events["init"]
                 .ArgumentAsString("certificate", certificate)
+                .ArgumentAsString("privateKey", privateKey)
                 .Fire();
         }
         public void Print(String printer,String content_type, String data)
