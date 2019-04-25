@@ -213,9 +213,9 @@ procedure TVuiQz.PrintF(ADataType,AFormat,AData,AOptions:string);
 var
   row : string;
 begin
-  row := Format('{"type":"%s","data":"%s"',[ADataType.ToLower,AFormat.ToLower,Encode(AData)]);
+  row := Format('{"type":"%s","format":"%s","data":"%s"',[ADataType.ToLower,AFormat.ToLower,Encode(AData)]);
   if AOptions='' then row := Format('%s}',[row])
-  else                row := Format('%s,"options":{%s}}',[AOptions]);
+  else                row := Format('%s,"options":{%s}}',[row,AOptions]);
   AddRow(Row);
 end;
 
