@@ -169,7 +169,16 @@ var Webcam = {
 			
 			// ask user for access to their camera
 			var self = this;
-			this.mediaDevices.getUserMedia({
+			// const mediaStream = await navigator.mediaDevices.getUserMedia({
+				// "audio": false,
+				// "video": this.params.constraints || {
+					// mandatory: {
+						// minWidth: this.params.dest_width,
+						// minHeight: this.params.dest_height
+					// }
+				// }
+			// });
+			navigator.mediaDevices.getUserMedia({
 				"audio": false,
 				"video": this.params.constraints || {
 					mandatory: {
@@ -187,8 +196,8 @@ var Webcam = {
 					self.dispatch('load');
 					self.dispatch('live');
 					self.flip();
-				};
-				video.src = window.URL.createObjectURL( stream ) || stream;
+				};				
+				video.srcObject = stream;				
 			})
 			.catch( function(err) {
 				// JH 2016-07-31 Instead of dispatching error, now falling back to Flash if userMedia fails (thx @john2014)
