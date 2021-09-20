@@ -148,5 +148,10 @@ namespace QzPrint
             qz.Default = cbPrinters.Text;
 
         }
+
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://qz.io");
+        }
     }
 }

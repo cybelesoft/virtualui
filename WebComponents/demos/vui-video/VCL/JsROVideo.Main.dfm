@@ -97,11 +97,12 @@ object Form5: TForm5
       AutoSize = False
     end
     object TrackBar1: TTrackBar
-      Left = 16
+      Left = 8
       Top = 48
       Width = 641
       Height = 25
       Anchors = [akLeft, akTop, akRight]
+      Max = 100
       TabOrder = 0
       OnChange = TrackBar1Change
     end

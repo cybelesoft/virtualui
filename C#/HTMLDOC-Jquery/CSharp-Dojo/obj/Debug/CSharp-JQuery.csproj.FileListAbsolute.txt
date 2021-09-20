@@ -1,0 +1,10 @@
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\bin\Debug\CSharp-JQueryUI.exe.config
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\bin\Debug\CSharp-JQueryUI.exe
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\bin\Debug\CSharp-JQueryUI.pdb
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp-JQuery.csproj.AssemblyReference.cache
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp_JQueryUI.Form1.resources
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp_JQueryUI.Properties.Resources.resources
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp-JQuery.csproj.GenerateResource.cache
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp-JQuery.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp-JQueryUI.exe
+C:\WORK\GitHub\myOwn\CSharp-Jquery\CSharp-Dojo\obj\Debug\CSharp-JQueryUI.pdb

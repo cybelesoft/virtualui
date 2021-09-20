@@ -31,6 +31,10 @@ namespace Cybele.Thinfinity
         void AllowExecute(string Filename);
         void SetImageQualityByWnd(long Wnd, string Classname, int Quality);
         void UploadFile(string ServerDirectory);
+        bool UploadFileEx(string ServerDirectory, out string FileName);
+        void Suspend();
+        void Resume();
+        void ForceOwnerWindow(long Wnd, bool All);
         bool TakeScreenshot(long Wnd, string FileName);
         void ShowVirtualKeyboard();
         bool Active { get; }
@@ -62,6 +66,8 @@ namespace Cybele.Thinfinity
         void OnDownloadEnd(string Filename);
         [DispId(106)]
         void OnRecorderChanged();
+        [DispId(107)]
+        void OnUploadEnd(string Filename);
     }
 
     [Guid("4D9F5347-460B-4275-BDF2-F2738E7F6757"), InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
@@ -84,13 +90,15 @@ namespace Cybele.Thinfinity
         string GetCookie(string Name);
         void SetCookie(string Name, string Value, string Expires);
         string SelectedRule { get; }
+        string ExtraData { get; }
+        string GetExtraDataValue(string Name);
     }
 
     [Guid("A5A7F58C-D83C-4C89-872E-0C51A9B5D3B0"), InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
     public interface IHTMLDoc
     {
         void CreateSessionURL(string url, string filename);
-        void CreateComponent(string Id, string Html, Int64 ReplaceWnd);
+        void CreateComponent(string Id, string Html, IntPtr ReplaceWnd);
         string GetSafeUrl(string filename, int minutes);
         void LoadScript(string url, string filename);
         void ImportHTML(string url, string filename);
@@ -110,6 +118,8 @@ namespace Cybele.Thinfinity
         MouseMoveGestureStyle MouseMoveGestureStyle { get; set; }
         MouseMoveGestureAction MouseMoveGestureAction { get; set; }
         bool CursorVisible { get; set; }
+        int MouseWheelStepValue { get; set; }
+        int MouseWheelDirection { get; set; }
     }
 
     public enum IJSDataType
@@ -509,6 +519,43 @@ namespace Cybele.Thinfinity
                     m_VirtualUI.ClientSettings.CursorVisible = value;
             }
         }
+
+    	/// <summary>
+    	/// Specifies the scroll speed when the "mouse move" simulation on a
+        /// touch device is interpreted as a mouse wheel. Default value is
+    	/// 120. Lower values results in a smooth scrolling.
+        /// </summary>
+        public int MouseWheelStepValue
+        {
+            get
+            {
+                if (m_VirtualUI != null)
+                    return m_VirtualUI.ClientSettings.MouseWheelStepValue;
+                return 120;
+            }
+            set
+            {
+                if (m_VirtualUI != null)
+                    m_VirtualUI.ClientSettings.MouseWheelStepValue = value;
+            }
+        }
+
+        /// <summary>
+        /// Specifies the scroll direction when the "mouse move" simulation on a
+        /// touch device is interpreted as a mouse wheel. Set this to 1 (default)
+        /// to normal direction, or -1 to invert.
+        /// </summary>
+        public int MouseWheelDirection {
+            get {
+                if (m_VirtualUI != null)
+                    return m_VirtualUI.ClientSettings.MouseWheelDirection;
+                return 1;
+            }
+            set {
+                if (m_VirtualUI != null)
+                    m_VirtualUI.ClientSettings.MouseWheelDirection = value;
+            }
+        }
     }
 
     /*
@@ -774,6 +821,27 @@ namespace Cybele.Thinfinity
                 return "";
             }
         }
+
+        /// <summary>
+        /// \Returns aditional data from Browser (JSON format).
+        /// </summary>
+        public string ExtraData {
+            get {
+                if (m_VirtualUI != null)
+                    return m_VirtualUI.BrowserInfo.ExtraData;
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// \Returns a specific value from ExtraData by it's name.
+        /// </summary>
+        /// <param name="Name">Name of value to return.</param>
+        public string GetExtraDataValue(string Name) {
+            if (m_VirtualUI != null)
+                return m_VirtualUI.BrowserInfo.GetExtraDataValue(Name);
+            return "";
+        }
     }
 
     /*
@@ -813,14 +881,10 @@ namespace Cybele.Thinfinity
         /// </summary>
         public void CreateComponent(string Id, string Html, IntPtr ReplaceWnd)
         {
-            CreateComponent(Id,Html,(Int64) ReplaceWnd);
-        }
-
-        public void CreateComponent(string Id, string Html, Int64 ReplaceWnd)
-        {
             if (m_VirtualUI != null)
                 m_VirtualUI.HTMLDoc.CreateComponent(Id, Html, ReplaceWnd);
         }
+
         /// <summary>
         ///   Creates an url pointing to a local filename. This url is valid during the session lifetime and its private to this session.
         /// </summary>
@@ -996,6 +1060,11 @@ namespace Cybele.Thinfinity
         public string Filename { get; set; }
     }
 
+    public class UploadEndArgs : EventArgs
+    {
+        public string Filename { get; set; }
+    }
+
     public class CloseArgs : EventArgs
     {
     }
@@ -1034,6 +1103,9 @@ namespace Cybele.Thinfinity
         public void OnDownloadEnd(string Filename)
         {
             m_VirtualUI.OnDownloadEndEventHandler(Filename);
+        }
+        public void OnUploadEnd(string Filename) {
+            m_VirtualUI.OnUploadEndEventHandler(Filename);
         }
         public void OnRecorderChanged() {
             m_VirtualUI.OnRecorderChangedEventHandler();
@@ -1090,8 +1162,8 @@ namespace Cybele.Thinfinity
                     virtualUIEventSink = g_virtualUI.virtualUIEventSink;
                     connectionPointContainer = g_virtualUI.connectionPointContainer;
                     connectionPoint = g_virtualUI.connectionPoint;
-                    if (connectionPoint != null)
-                        connectionPoint.Advise((IEvents)virtualUIEventSink, out connectionCookie);
+                    //if (connectionPoint != null)
+                    //    connectionPoint.Advise((IEvents)virtualUIEventSink, out connectionCookie);
                 }
                 else
                 {
@@ -1307,6 +1379,43 @@ namespace Cybele.Thinfinity
         public void UploadFile()
         {
             UploadFile("");
+        }
+
+        public bool UploadFileEx(string ServerDirectory, out string FileName) {
+            if (m_VirtualUI != null)
+                return m_VirtualUI.UploadFileEx(ServerDirectory, out FileName);
+            else {
+                FileName = "";
+                return false;
+            }
+        }
+
+        public bool UploadFileEx(out string FileName) {
+            return UploadFileEx("", out FileName);
+        }
+
+        /// <summary>
+        ///   Suspends the UI streaming to the web browser
+        /// </summary>
+        public void Suspend()
+        {
+            if (m_VirtualUI != null) m_VirtualUI.Suspend();
+        }
+        /// <summary>
+        ///   Resumes the UI streaming to the web browser
+        /// </summary>
+        public void Resume()
+        {
+            if (m_VirtualUI != null) m_VirtualUI.Resume();
+        }
+
+        /// <summary>
+        ///   Forces an owner window for all or modal windows.
+        /// </summary>
+        /// <param name="Wnd">The Window to be owner.</param>
+        public void ForceOwnerWindow(long Wnd, bool All)
+        {
+            if (m_VirtualUI != null) m_VirtualUI.ForceOwnerWindow(Wnd,All);
         }
 
         /// <summary>
@@ -1651,6 +1760,27 @@ namespace Cybele.Thinfinity
         }
 
         /// <summary>
+        ///   Fires when the UploadFile method ends.
+        /// </summary>
+        private event EventHandler<UploadEndArgs> m_OnUploadEnd;
+        public event EventHandler<UploadEndArgs> OnUploadEnd {
+            add {
+                if (g_virtualUI != this) {
+                    g_virtualUI.OnUploadEnd += value;
+                    return;
+                }
+                m_OnUploadEnd += value;
+            }
+            remove {
+                if (g_virtualUI != this) {
+                    g_virtualUI.OnUploadEnd -= value;
+                    return;
+                }
+                m_OnUploadEnd -= value;
+            }
+        }
+
+        /// <summary>
         ///   Fires when there is a change in the recording or playback status.
         /// </summary>
         private event EventHandler<RecorderChangedArgs> m_OnRecorderChanged;
@@ -1730,6 +1860,14 @@ namespace Cybele.Thinfinity
                 DownloadEndArgs args = new DownloadEndArgs();
                 args.Filename = Filename;
                 m_OnDownloadEnd(this, args);
+            }
+        }
+
+        internal void OnUploadEndEventHandler(string Filename) {
+            if (m_OnUploadEnd != null) {
+                UploadEndArgs args = new UploadEndArgs();
+                args.Filename = Filename;
+                m_OnUploadEnd(this, args);
             }
         }
 

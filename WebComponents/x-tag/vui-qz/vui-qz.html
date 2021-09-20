@@ -1,7 +1,6 @@
 ﻿<script type="text/javascript" src="dependencies/sha-256.min.js"></script>
 <script type="text/javascript" src="dependencies/rsvp-3.1.0.min.js"></script>
 <script type="text/javascript" src="qz-tray.js"></script>
-<script type="text/javascript" src="jsrsasign-all-min.js"></script>
 <script type="text/javascript">
     xtag.register('vui-qz', {
         'content':'',
@@ -12,17 +11,8 @@
         }
     });
     
-    function hexToString(hex) {
-        var string = '';
-        for (var i = 0; i < hex.length; i += 2) {
-          string += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-        }
-        return string;
-    }    
     function initQZ() {
         var connecting = false;
-        var runtimeCert = null;
-        var runtimePriv = null;
     
         function displayError(e) {
             alert(e);
@@ -92,65 +82,7 @@
             qz.print(qzsettings, printData).catch(displayError);
         });
     
-        jsro.on('qzro', 'init', function (certificate, privateKey) {
-            runtimeCert = (typeof certificate == "undefined" || certificate == null || certificate === "")? null : certificate;
-            runtimePriv = (typeof privateKey == "undefined" || privateKey == null || privateKey === "")? null : privateKey;
-            if (!runtimeCert || !runtimePriv) {
-                runtimeCert =
-                    "-----BEGIN CERTIFICATE-----\n" +
-                    "MIIEADCCAuigAwIBAgIBADANBgkqhkiG9w0BAQsFADCBuDEbMBkGA1UEAwwSd3d3\n" +
-                    "LnRoaW5maW5pdHkuY29tMRwwGgYDVQQLDBNQcm9kdWN0IERldmVsb3BtZW50MREw\n" +
-                    "DwYDVQQIDAhEZWxhd2FyZTEeMBwGA1UECgwVQ3liZWxlIFNvZnR3YXJlLCBJbmMu\n" +
-                    "MQswCQYDVQQGEwJVUzETMBEGA1UEBwwKV2lsbWluZ3RvbjEmMCQGCSqGSIb3DQEJ\n" +
-                    "ARYXIHN1cHBvcnRAY3liZWxlc29mdC5jb20wHhcNMTUwOTE1MjEyMjEyWhcNMjUw\n" +
-                    "OTEyMjEyMjEyWjCBuDEbMBkGA1UEAwwSd3d3LnRoaW5maW5pdHkuY29tMRwwGgYD\n" +
-                    "VQQLDBNQcm9kdWN0IERldmVsb3BtZW50MREwDwYDVQQIDAhEZWxhd2FyZTEeMBwG\n" +
-                    "A1UECgwVQ3liZWxlIFNvZnR3YXJlLCBJbmMuMQswCQYDVQQGEwJVUzETMBEGA1UE\n" +
-                    "BwwKV2lsbWluZ3RvbjEmMCQGCSqGSIb3DQEJARYXIHN1cHBvcnRAY3liZWxlc29m\n" +
-                    "dC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDi1LALY9SGcisH\n" +
-                    "PtyKt+yR/zJ2EcInuZmSrzkH1Gps30k9rQM7PbFQtGw5iiN9pzJDUnRGrzpFkJzG\n" +
-                    "LkfLO3pJ1kJJeH0CCJFyK8rcVRESRzI/PnwRich9R5wp9BOorShga1DcYPbEiT5D\n" +
-                    "H8lepblwbu1J3p+DoaJ7IqK25PNl+a3IiMLzQ7roJIeYm3rDAWEksbSMO9ZvJpfd\n" +
-                    "QJryYz1pXdwEo550fS+oPH1J3Fj7Sw87BjU/qiXp3s1AzHP5/MnpGToimImYeuBD\n" +
-                    "A7JEecnatrtEscFQA4FwNAjznSY5dXtbeHqSqhRfZ0j5ttuWceg4Udk/XG1CZUH8\n" +
-                    "/WKzfM4hAgMBAAGjEzARMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQAD\n" +
-                    "ggEBAMaVn4eFj3huqJdyPU9Mqtbq2C0hq4JEzWsI5oQddrFjcFXQEd1+JFEyzHdp\n" +
-                    "ldNBBqg9m8coQaygrVBPmcfTsfv6eIMJIZbBI/UwiKhFdq9v1MfqoMH53gLSq7c2\n" +
-                    "l8zSEp+dCSIYOSIBMyBCwm8h8Gg3nOQ09BFBuLCaK6dbwj3xb5bWe8i5+bkVjpBl\n" +
-                    "9lZTpV943csrA9XKLOJ8yhNwbIzkjjNg5+nfa5jWIAWYCdW4dO7uVQcaD/P1o+ye\n" +
-                    "8XzTl3EV8oOcaMU4mB5NayiR+3/wumgKkblLuP+3lJN+lLDRw/TdTShChZFYqZKY\n" +
-                    "b3lk1hGQ33FMETQW0ZtY1u4ogCg=\n" +
-                    "-----END CERTIFICATE-----\n";
-                runtimePriv =
-                    "-----BEGIN PRIVATE KEY-----\n" +
-                    "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDi1LALY9SGcisH\n" +
-                    "PtyKt+yR/zJ2EcInuZmSrzkH1Gps30k9rQM7PbFQtGw5iiN9pzJDUnRGrzpFkJzG\n" +
-                    "LkfLO3pJ1kJJeH0CCJFyK8rcVRESRzI/PnwRich9R5wp9BOorShga1DcYPbEiT5D\n" +
-                    "H8lepblwbu1J3p+DoaJ7IqK25PNl+a3IiMLzQ7roJIeYm3rDAWEksbSMO9ZvJpfd\n" +
-                    "QJryYz1pXdwEo550fS+oPH1J3Fj7Sw87BjU/qiXp3s1AzHP5/MnpGToimImYeuBD\n" +
-                    "A7JEecnatrtEscFQA4FwNAjznSY5dXtbeHqSqhRfZ0j5ttuWceg4Udk/XG1CZUH8\n" +
-                    "/WKzfM4hAgMBAAECggEATo6MXZV4YAugHUVHCf/CvZldN4jU7f8YUbW/kZeeOBBo\n" +
-                    "hCSsLtMh2qpxpMfTnMvP24Lt5CEBlGAN+5DBqn/xzSqYEGvbF14ySREjk4UegW8I\n" +
-                    "1uBkBYrrVX/8dIckW9GEX0grW/d03wIM/yA+FDpe67JvGZsxMVxEMlL/eUn3hcP4\n" +
-                    "4IjhqE3uSkuSfxxIi0uE2TS7lTqqw37s3JU1TVXnwSCBLhwBiVxuXpWxo6U0aIZY\n" +
-                    "Mcd/5ppisTOE0WV+d4fbDtHIVhj/rfutAHI3ITRpFucMfoVPPE4D/jqShQcpq2Nj\n" +
-                    "+zDhAWO1B/veG0fjL84u0ytcoIsfLfQ03ku0e+LYAQKBgQDzlmr8IeSuNYFN79p4\n" +
-                    "bRsowROHE89Y7bdgrKsFf/VNCXKItyI864slq2R5Ph0w5y4FyyOaHUfC6yLUxQb4\n" +
-                    "MzjeHHW6sos6ry80iJz5PAO7YTpi8O1CNjcHPJi3EQRMraU4d9M8FAEuQagb7tXF\n" +
-                    "KpZu7JTY73ouNz/jWYuAdAbk4QKBgQDuY63XaD6AvsC44+GNkY2n38VUWYFSnBFW\n" +
-                    "E8nF6wihN9eJ3R59kglmoiYB+l4T0C7CZn5Cl8MLawh2+otL61QJrmD70BbOxUFO\n" +
-                    "OUEFlDxq24V84yvZU3cumHUWOT8BJuB58mZoDhCDuLL7eDITtN+g8Amn39F3WPpo\n" +
-                    "7jfjuAHRQQKBgCG/nWMBbyWT1C5wJNy6gSDMX2A/pmKzzMxgH/HLILljrbKzbNLz\n" +
-                    "73twm6MQsAqufPnggzY/CEpBObow8h5BOofLeaQ8SH4A95FXvCfr4Lh9aBF9P+IE\n" +
-                    "kOs3whDbErVs+Y8xStrwCpnWDuyP0p5WoDEOJjFIPK1aikd9iI5rhOkBAoGBALOY\n" +
-                    "yTmFwcEA9PTWSfF7/PrCbUn0/KceCTmOQu8m+SNsjKfCvNvhj8+QzY2j8AiBSRkQ\n" +
-                    "WoMVDs6lXoU0kIkry+5XP5220dgJZ//kxoXLfhELPXAvPbPHW/zwwxVxH3Rgs7Fr\n" +
-                    "25b9MZfrKHynuyJ5nBkFfmDJEGgX0uAGyHh5AnWBAoGAX5FKOZyQr8DB8YolTlxH\n" +
-                    "aAfgEB7/E7d2ogg9QFZ1Y2NG5xdUfKWJvlsoKGWoEzlVqtHsYb0/Qn9l04WMKMKQ\n" +
-                    "SEjjTfWx2eeAJrPiJTNtxCUKxiaJvLbgNVnWtcX8on3TkVF12+9uMbYSuXubJYIH\n" +
-                    "kwEG8Zlj7V1/EzWOnldBCIs=\n" +
-                    "-----END PRIVATE KEY-----\n";
-            }
+        jsro.on('qzro', 'init', function (coords) {
             launchQZ();
             postInit();
         });    
@@ -163,22 +95,75 @@
             //        resolve();
         
             //Alternate method 2 - direct
-            resolve(runtimeCert);
-            runtimeCert = null;
+            resolve("-----BEGIN CERTIFICATE-----\n" +
+                    "MIIFAzCCAuugAwIBAgICEAIwDQYJKoZIhvcNAQEFBQAwgZgxCzAJBgNVBAYTAlVT\n" +
+                    "MQswCQYDVQQIDAJOWTEbMBkGA1UECgwSUVogSW5kdXN0cmllcywgTExDMRswGQYD\n" +
+                    "VQQLDBJRWiBJbmR1c3RyaWVzLCBMTEMxGTAXBgNVBAMMEHF6aW5kdXN0cmllcy5j\n" +
+                    "b20xJzAlBgkqhkiG9w0BCQEWGHN1cHBvcnRAcXppbmR1c3RyaWVzLmNvbTAeFw0x\n" +
+                    "NTAzMTkwMjM4NDVaFw0yNTAzMTkwMjM4NDVaMHMxCzAJBgNVBAYTAkFBMRMwEQYD\n" +
+                    "VQQIDApTb21lIFN0YXRlMQ0wCwYDVQQKDAREZW1vMQ0wCwYDVQQLDAREZW1vMRIw\n" +
+                    "EAYDVQQDDAlsb2NhbGhvc3QxHTAbBgkqhkiG9w0BCQEWDnJvb3RAbG9jYWxob3N0\n" +
+                    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtFzbBDRTDHHmlSVQLqjY\n" +
+                    "aoGax7ql3XgRGdhZlNEJPZDs5482ty34J4sI2ZK2yC8YkZ/x+WCSveUgDQIVJ8oK\n" +
+                    "D4jtAPxqHnfSr9RAbvB1GQoiYLxhfxEp/+zfB9dBKDTRZR2nJm/mMsavY2DnSzLp\n" +
+                    "t7PJOjt3BdtISRtGMRsWmRHRfy882msBxsYug22odnT1OdaJQ54bWJT5iJnceBV2\n" +
+                    "1oOqWSg5hU1MupZRxxHbzI61EpTLlxXJQ7YNSwwiDzjaxGrufxc4eZnzGQ1A8h1u\n" +
+                    "jTaG84S1MWvG7BfcPLW+sya+PkrQWMOCIgXrQnAsUgqQrgxQ8Ocq3G4X9UvBy5VR\n" +
+                    "CwIDAQABo3sweTAJBgNVHRMEAjAAMCwGCWCGSAGG+EIBDQQfFh1PcGVuU1NMIEdl\n" +
+                    "bmVyYXRlZCBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUpG420UhvfwAFMr+8vf3pJunQ\n" +
+                    "gH4wHwYDVR0jBBgwFoAUkKZQt4TUuepf8gWEE3hF6Kl1VFwwDQYJKoZIhvcNAQEF\n" +
+                    "BQADggIBAFXr6G1g7yYVHg6uGfh1nK2jhpKBAOA+OtZQLNHYlBgoAuRRNWdE9/v4\n" +
+                    "J/3Jeid2DAyihm2j92qsQJXkyxBgdTLG+ncILlRElXvG7IrOh3tq/TttdzLcMjaR\n" +
+                    "8w/AkVDLNL0z35shNXih2F9JlbNRGqbVhC7qZl+V1BITfx6mGc4ayke7C9Hm57X0\n" +
+                    "ak/NerAC/QXNs/bF17b+zsUt2ja5NVS8dDSC4JAkM1dD64Y26leYbPybB+FgOxFu\n" +
+                    "wou9gFxzwbdGLCGboi0lNLjEysHJBi90KjPUETbzMmoilHNJXw7egIo8yS5eq8RH\n" +
+                    "i2lS0GsQjYFMvplNVMATDXUPm9MKpCbZ7IlJ5eekhWqvErddcHbzCuUBkDZ7wX/j\n" +
+                    "unk/3DyXdTsSGuZk3/fLEsc4/YTujpAjVXiA1LCooQJ7SmNOpUa66TPz9O7Ufkng\n" +
+                    "+CoTSACmnlHdP7U9WLr5TYnmL9eoHwtb0hwENe1oFC5zClJoSX/7DRexSJfB7YBf\n" +
+                    "vn6JA2xy4C6PqximyCPisErNp85GUcZfo33Np1aywFv9H+a83rSUcV6kpE/jAZio\n" +
+                    "5qLpgIOisArj1HTM6goDWzKhLiR/AeG3IJvgbpr9Gr7uZmfFyQzUjvkJ9cybZRd+\n" +
+                    "G8azmpBBotmKsbtbAU/I/LVk8saeXznshOVVpDRYtVnjZeAneso7\n" +
+                    "-----END CERTIFICATE-----\n" +
+                    "--START INTERMEDIATE CERT--\n" +
+                    "-----BEGIN CERTIFICATE-----\n" +
+                    "MIIFEjCCA/qgAwIBAgICEAAwDQYJKoZIhvcNAQELBQAwgawxCzAJBgNVBAYTAlVT\n" +
+                    "MQswCQYDVQQIDAJOWTESMBAGA1UEBwwJQ2FuYXN0b3RhMRswGQYDVQQKDBJRWiBJ\n" +
+                    "bmR1c3RyaWVzLCBMTEMxGzAZBgNVBAsMElFaIEluZHVzdHJpZXMsIExMQzEZMBcG\n" +
+                    "A1UEAwwQcXppbmR1c3RyaWVzLmNvbTEnMCUGCSqGSIb3DQEJARYYc3VwcG9ydEBx\n" +
+                    "emluZHVzdHJpZXMuY29tMB4XDTE1MDMwMjAwNTAxOFoXDTM1MDMwMjAwNTAxOFow\n" +
+                    "gZgxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOWTEbMBkGA1UECgwSUVogSW5kdXN0\n" +
+                    "cmllcywgTExDMRswGQYDVQQLDBJRWiBJbmR1c3RyaWVzLCBMTEMxGTAXBgNVBAMM\n" +
+                    "EHF6aW5kdXN0cmllcy5jb20xJzAlBgkqhkiG9w0BCQEWGHN1cHBvcnRAcXppbmR1\n" +
+                    "c3RyaWVzLmNvbTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBANTDgNLU\n" +
+                    "iohl/rQoZ2bTMHVEk1mA020LYhgfWjO0+GsLlbg5SvWVFWkv4ZgffuVRXLHrwz1H\n" +
+                    "YpMyo+Zh8ksJF9ssJWCwQGO5ciM6dmoryyB0VZHGY1blewdMuxieXP7Kr6XD3GRM\n" +
+                    "GAhEwTxjUzI3ksuRunX4IcnRXKYkg5pjs4nLEhXtIZWDLiXPUsyUAEq1U1qdL1AH\n" +
+                    "EtdK/L3zLATnhPB6ZiM+HzNG4aAPynSA38fpeeZ4R0tINMpFThwNgGUsxYKsP9kh\n" +
+                    "0gxGl8YHL6ZzC7BC8FXIB/0Wteng0+XLAVto56Pyxt7BdxtNVuVNNXgkCi9tMqVX\n" +
+                    "xOk3oIvODDt0UoQUZ/umUuoMuOLekYUpZVk4utCqXXlB4mVfS5/zWB6nVxFX8Io1\n" +
+                    "9FOiDLTwZVtBmzmeikzb6o1QLp9F2TAvlf8+DIGDOo0DpPQUtOUyLPCh5hBaDGFE\n" +
+                    "ZhE56qPCBiQIc4T2klWX/80C5NZnd/tJNxjyUyk7bjdDzhzT10CGRAsqxAnsjvMD\n" +
+                    "2KcMf3oXN4PNgyfpbfq2ipxJ1u777Gpbzyf0xoKwH9FYigmqfRH2N2pEdiYawKrX\n" +
+                    "6pyXzGM4cvQ5X1Yxf2x/+xdTLdVaLnZgwrdqwFYmDejGAldXlYDl3jbBHVM1v+uY\n" +
+                    "5ItGTjk+3vLrxmvGy5XFVG+8fF/xaVfo5TW5AgMBAAGjUDBOMB0GA1UdDgQWBBSQ\n" +
+                    "plC3hNS56l/yBYQTeEXoqXVUXDAfBgNVHSMEGDAWgBQDRcZNwPqOqQvagw9BpW0S\n" +
+                    "BkOpXjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQAJIO8SiNr9jpLQ\n" +
+                    "eUsFUmbueoxyI5L+P5eV92ceVOJ2tAlBA13vzF1NWlpSlrMmQcVUE/K4D01qtr0k\n" +
+                    "gDs6LUHvj2XXLpyEogitbBgipkQpwCTJVfC9bWYBwEotC7Y8mVjjEV7uXAT71GKT\n" +
+                    "x8XlB9maf+BTZGgyoulA5pTYJ++7s/xX9gzSWCa+eXGcjguBtYYXaAjjAqFGRAvu\n" +
+                    "pz1yrDWcA6H94HeErJKUXBakS0Jm/V33JDuVXY+aZ8EQi2kV82aZbNdXll/R6iGw\n" +
+                    "2ur4rDErnHsiphBgZB71C5FD4cdfSONTsYxmPmyUb5T+KLUouxZ9B0Wh28ucc1Lp\n" +
+                    "rbO7BnjW\n" +
+                    "-----END CERTIFICATE-----\n");
         });
     
         qz.security.setSignaturePromise(function (toSign) {
             return function (resolve, reject) {
-                try {
-                    var pk = KEYUTIL.getKey(runtimePriv);
-                    var sign = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
-                    sign.init(pk);
-                    sign.updateString(toSign);
-                    var hex = sign.sign();
-                    resolve(stob64(hexToString(hex)));
-                } catch (err) {
-                    //console.error(err);
-                }
+                //Preferred method - from server
+                //            $.ajax("/secure/url/for/sign-message?request=" + toSign).then(resolve, reject);
+        
+                //Alternate method - unsigned
+                resolve();
             };
         });
     }

@@ -68,8 +68,7 @@ var Webcam = {
 	
 	init: function() {
 		// initialize, check for getUserMedia support
-		var self = this;
-		
+		var self = this;		
 		// Setup getUserMedia, with polyfill for older browsers
 		// Adapted from: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 		this.mediaDevices = (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) ? 

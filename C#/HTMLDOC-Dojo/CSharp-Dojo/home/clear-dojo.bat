@@ -1,0 +1,1 @@
+rd /s /q dojo dojox dijit

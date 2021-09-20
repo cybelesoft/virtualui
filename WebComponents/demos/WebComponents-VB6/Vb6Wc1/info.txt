@@ -1,0 +1,1 @@
+This is a WebComponent sample with back and forth communication

@@ -1,0 +1,44 @@
+﻿<script type="text/javascript" src="signature_pad.min.js"></script>
+<script type="text/javascript">
+    xtag.register('vui-signature-pad', {
+        'content': '<div style="background-color:white;width:100%;height:100%"><canvas style="width:100%;height:100%"></canvas></div>',
+        'lifecycle': {
+            'inserted': function () {
+                var canvas = this.querySelector("canvas");
+                var div = canvas.parentElement;
+                function checkCanvasSize() {
+                    var bounding = canvas.getBoundingClientRect();
+                    if ((bounding.width!=canvas.width || bounding.height!=canvas.height) && (canvas.width > 0 && canvas.height > 0)) {
+                        var context = canvas.getContext("2d");
+                        var imagedata = context.getImageData(0, 0, canvas.width, canvas.height);
+                        canvas.width = bounding.width;
+                        canvas.height = bounding.height;
+                        context.putImageData(imagedata, 0, 0);
+                    }
+                };
+                setInterval(checkCanvasSize,10);
+                var signaturePad = new SignaturePad(canvas, { 'minWidth': 0.5, 'maxWidth': 1.5 });
+                var controlId = this.id;
+                var ro = null;
+                var jsro = new Thinfinity.JsRO();
+
+                jsro.on('model:'+controlId, 'created', function (obj) {
+                    ro = jsro.model[controlId];
+                });
+
+                jsro.on(controlId, "clear", function () {
+                    signaturePad.clear();
+                });
+
+                jsro.on(controlId, "save", function (imgtype) {
+                    if (signaturePad.isEmpty()) {
+                        alert("Please provide signature first.");
+                    } else {
+                        ro.data = signaturePad.toDataURL("image/"+imgtype, 1.0);
+                    }
+                });
+            }
+        }
+    });
+
+</script>

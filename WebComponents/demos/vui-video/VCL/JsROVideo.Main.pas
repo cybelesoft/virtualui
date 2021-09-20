@@ -91,9 +91,11 @@ begin
   EnableControls(Groupbox1,False);
 
   mediafile := ExpandFilename(FVideo.XTagDir + '..\demos\vui-video\media\big_buck_bunny_480p_2mb.mp4');
+  mediafile := ExpandFilename(FVideo.XTagDir + '..\demos\vui-video\media\ed.mp4');
 
   cbUrl.Items.Insert(0, mediafile);
   cbUrl.ItemIndex := 0;
+  TrackBar1.Min := 0;
 end;
 
 procedure TForm5.StateChanged(Sender: TObject);
@@ -104,19 +106,19 @@ end;
 procedure TForm5.TrackBar1Change(Sender: TObject);
 begin
   if not FPositionChanging then
-    FVideo.Move(TrackBar1.Position/100);
+    FVideo.Move(TrackBar1.Position);
 end;
 
 procedure TForm5.PositionChanged(Sender: TObject);
 begin
   FPositionChanging := true;
-  TrackBar1.Position := Round(FVideo.Position * 100);
+  TrackBar1.Position := Round(FVideo.Position);
   FPositionChanging := False;
 end;
 
 procedure TForm5.LengthChanged(Sender: TObject);
 begin
-  TrackBar1.Max := Round(FVideo.Length * 100);
+  TrackBar1.Max := Round(FVideo.Length);
   EnableControls(Groupbox1,true);
 end;
 

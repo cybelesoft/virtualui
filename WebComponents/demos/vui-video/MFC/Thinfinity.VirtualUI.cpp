@@ -1,3 +1,8 @@
+#if (_MSC_VER == 1200)
+  // Visual Studio 6: forced WINNT version needed to use IsDebuggerPresent()
+  #define _WIN32_WINNT 0x400
+#endif
+
 #include <rpc.h>
 #include <rpcndr.h>
 #include "Thinfinity.VirtualUI.h"
@@ -92,12 +97,20 @@ std::wstring VirtualUILibrary::GetDLLPath() {
 VirtualUI::VirtualUI() {
 	m_refcount = 0;
 	m_VirtualUI = NULL;
+	m_ClientSettings = NULL;
+	m_BrowserInfo = NULL;
+	m_DevServer = NULL;
+	m_Recorder = NULL;
+	m_FileSystemFilter = NULL;
+	m_RegistryFilter = NULL;
+	m_HTMLDoc = NULL;
 
 	OnBrowserResize = NULL;
 	OnGetUploadDir = NULL;
 	OnClose = NULL;
 	OnReceiveMessage = NULL;
 	OnDownloadEnd = NULL;
+	OnUploadEnd = NULL;
 	OnRecorderChanged = NULL;
 
 	m_VirtualUILib = new VirtualUILibrary();
@@ -317,6 +330,30 @@ HRESULT __stdcall VirtualUI::Uploadfile(BSTR ServerDirectory) {
     return S_OK;
 }
 
+HRESULT __stdcall VirtualUI::UploadFileEx(BSTR ServerDirectory, BSTR* FileName, VARIANT_BOOL *OutRetVal) {
+	if (m_VirtualUI != NULL)
+		return m_VirtualUI->UploadFileEx(ServerDirectory, FileName, OutRetVal);
+	return S_OK;
+}
+
+HRESULT __stdcall VirtualUI::Suspend() {
+	if (m_VirtualUI != NULL)
+		return m_VirtualUI->Suspend();
+    return S_OK;
+}
+
+HRESULT __stdcall VirtualUI::Resume() {
+	if (m_VirtualUI != NULL)
+		return m_VirtualUI->Resume();
+	return S_OK;
+}
+
+HRESULT __stdcall VirtualUI::ForceOwnerWindow(long Wnd, VARIANT_BOOL All) {
+    if (m_VirtualUI != NULL)
+		return m_VirtualUI->ForceOwnerWindow(Wnd,All);
+	return S_OK;
+};
+
 HRESULT __stdcall VirtualUI::TakeScreenshot(long Wnd, BSTR FileName, VARIANT_BOOL *OutRetVal) {
     if (m_VirtualUI != NULL)
         return m_VirtualUI->TakeScreenshot(Wnd, FileName, OutRetVal);
@@ -434,6 +471,21 @@ void VirtualUI::Uploadfile(std::wstring ServerDirectory) {
 
 void VirtualUI::Uploadfile() {
     Uploadfile(std::wstring(L""));
+}
+
+bool VirtualUI::UploadFileEx(std::wstring ServerDirectory, std::wstring &FileName) {
+	BSTR serverDir = SysAllocString(ServerDirectory.c_str());
+	BSTR fName;
+	VARIANT_BOOL ret = 0;
+	this->UploadFileEx(serverDir, &fName, &ret);
+	FileName = std::wstring(fName);
+	SysFreeString(fName);
+	SysFreeString(serverDir);
+	return (ret != 0);
+}
+
+bool VirtualUI::UploadFileEx(std::wstring &FileName) {
+	return UploadFileEx(std::wstring(L""), FileName);
 }
 
 bool VirtualUI::TakeScreenshot(HWND Wnd, std::wstring FileName) {
@@ -565,6 +617,7 @@ CHTMLDoc* VirtualUI::HTMLDoc() {
 VirtualUISink::VirtualUISink(VirtualUI* virtualUI) {
     m_VirtualUI = virtualUI;
     m_refcount = 0;
+	m_pIConnectionPoint = NULL;
     IConnectionPointContainer* pIConnectionPointContainerTemp = NULL;
     IUnknown* pIUnknown = NULL;
 
@@ -642,7 +695,11 @@ HRESULT __stdcall VirtualUISink::Invoke(DISPID DispID, REFIID IID, LCID LocaleID
 	if (DispID == 106) {
 		OnRecorderChanged();
 	}
-    return S_OK;
+	if (DispID == 107) {
+		BSTR data = GetAsBSTR(Params, 0);
+		OnUploadEnd(&data);
+	}
+	return S_OK;
 }
 
 ULONG __stdcall VirtualUISink::AddRef() {
@@ -836,11 +893,19 @@ HRESULT __stdcall VirtualUISink::OnReceiveMessage(BSTR *Data) {
 }
 
 HRESULT __stdcall VirtualUISink::OnDownloadEnd(BSTR *Filename) {
-    if (m_VirtualUI->OnDownloadEnd) {
-        std::wstring fName = *Filename;
-        m_VirtualUI->OnDownloadEnd(fName);
-    }
-    return S_OK;
+	if (m_VirtualUI->OnDownloadEnd) {
+		std::wstring fName = *Filename;
+		m_VirtualUI->OnDownloadEnd(fName);
+	}
+	return S_OK;
+}
+
+HRESULT __stdcall VirtualUISink::OnUploadEnd(BSTR *Filename) {
+	if (m_VirtualUI->OnUploadEnd) {
+		std::wstring fName = *Filename;
+		m_VirtualUI->OnUploadEnd(fName);
+	}
+	return S_OK;
 }
 
 HRESULT __stdcall VirtualUISink::OnRecorderChanged(void) {
@@ -974,6 +1039,36 @@ HRESULT __stdcall CClientSettings::put_CursorVisible(VARIANT_BOOL Value) {
     return S_OK;
 }
 
+HRESULT __stdcall CClientSettings::get_MouseWheelStepValue(long *Value) {
+    if (m_ClientSettings != NULL)
+        m_ClientSettings->get_MouseWheelStepValue(Value);
+    else {
+        *Value = 120;
+    }
+    return S_OK;
+}
+
+HRESULT __stdcall CClientSettings::put_MouseWheelStepValue(long Value) {
+    if (m_ClientSettings != NULL)
+        m_ClientSettings->put_MouseWheelStepValue(Value);
+    return S_OK;
+}
+
+HRESULT __stdcall CClientSettings::get_MouseWheelDirection(long *Value) {
+	if (m_ClientSettings != NULL)
+		m_ClientSettings->get_MouseWheelDirection(Value);
+	else {
+		*Value = 1;
+	}
+	return S_OK;
+}
+
+HRESULT __stdcall CClientSettings::put_MouseWheelDirection(long Value) {
+	if (m_ClientSettings != NULL)
+		m_ClientSettings->put_MouseWheelDirection(Value);
+	return S_OK;
+}
+
 MouseMoveGestureStyle CClientSettings::MouseMoveGestStyle() {
     MouseMoveGestureStyle ret;
     this->get_MouseMoveGestureStyle(&ret);
@@ -1003,6 +1098,26 @@ bool CClientSettings::CursorVisible() {
 void CClientSettings::CursorVisible(bool value) {
     VARIANT_BOOL visible = value ? -1 : 0;
     this->put_CursorVisible(visible);
+}
+
+long CClientSettings::MouseWheelStepValue() {
+    long ret = 0;
+    this->get_MouseWheelStepValue(&ret);
+    return ret;
+}
+
+void CClientSettings::MouseWheelStepValue(long value) {
+    this->put_MouseWheelStepValue(value);
+}
+
+long CClientSettings::MouseWheelDirection() {
+	long ret = 0;
+	this->get_MouseWheelDirection(&ret);
+	return ret;
+}
+
+void CClientSettings::MouseWheelDirection(long value) {
+	this->put_MouseWheelDirection(value);
 }
 
 
@@ -1599,6 +1714,24 @@ HRESULT __stdcall CBrowserInfo::get_SelectedRule(BSTR* Value) {
 	}
 }
 
+HRESULT __stdcall CBrowserInfo::get_ExtraData(BSTR *Value) {
+	if (m_BrowserInfo != NULL)
+		return m_BrowserInfo->get_ExtraData(Value);
+	else {
+		*Value = NULL;
+		return S_OK;
+	}
+}
+
+HRESULT __stdcall CBrowserInfo::GetExtraDataValue(BSTR Name, BSTR *Value) {
+	if (m_BrowserInfo != NULL)
+		return m_BrowserInfo->GetExtraDataValue(Name, Value);
+	else {
+		*Value = NULL;
+		return S_OK;
+	}
+}
+
 int CBrowserInfo::ViewWidth() {
     long ret;
     this->get_ViewWidth(&ret);
@@ -1719,6 +1852,25 @@ std::wstring CBrowserInfo::SelectedRule() {
 	SysFreeString(value);
 	return ret;
 }
+
+std::wstring CBrowserInfo::ExtraData() {
+	BSTR value;
+	this->get_ExtraData(&value);
+	std::wstring ret(value);
+	SysFreeString(value);
+	return ret;
+}
+
+std::wstring CBrowserInfo::GetExtraDataValue(std::wstring Name) {
+	BSTR value;
+	BSTR name = SysAllocString(Name.c_str());
+	this->GetExtraDataValue(name, &value);
+	std::wstring ret(value);
+	SysFreeString(name);
+	SysFreeString(value);
+	return ret;
+}
+
 
 
 
@@ -3363,7 +3515,7 @@ HRESULT __stdcall CHTMLDoc::CreateSessionURL(BSTR Url, BSTR Filename) {
 	return S_OK;
 }
 
-HRESULT __stdcall CHTMLDoc::CreateComponent(BSTR Id, BSTR Html, INT64 ReplaceWnd) {
+HRESULT __stdcall CHTMLDoc::CreateComponent(BSTR Id, BSTR Html, unsigned int ReplaceWnd) {
 	if (m_HTMLDoc != NULL)
 		m_HTMLDoc->CreateComponent(Id, Html, ReplaceWnd);
 	return S_OK;
@@ -3395,7 +3547,7 @@ void CHTMLDoc::CreateSessionURL(std::wstring Url, std::wstring Filename) {
 	SysFreeString(url);
 }
 
-void CHTMLDoc::CreateComponent(std::wstring Id, std::wstring Html, INT64 ReplaceWnd) {
+void CHTMLDoc::CreateComponent(std::wstring Id, std::wstring Html, unsigned int ReplaceWnd) {
 	BSTR id = SysAllocString(Id.c_str());
 	BSTR html = SysAllocString(Html.c_str());
 	this->CreateComponent(id, html, ReplaceWnd);
@@ -3487,7 +3639,13 @@ bool JSROGetArgumentAsBool(IJSMethod* AMethod, std::wstring argName) {
 float JSROGetArgumentAsFloat(IJSMethod* AMethod, std::wstring argName) {
 	float ret;
 	std::wstring strRes = JSROGetArgumentAsString(AMethod, argName);
-	ret = _wtof(strRes.c_str());
+#if (_MSC_VER == 1200)
+	//Visual Studio 6
+	wchar_t* end;
+	ret = wcstod(strRes.c_str(), &end);
+#else
+	ret = (float)_wtof(strRes.c_str());
+#endif
 	return ret;
 }
 

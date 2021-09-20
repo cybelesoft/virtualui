@@ -205,6 +205,16 @@ extern "C" {
 
 		virtual /* [id][propget] */ HRESULT __stdcall Get_HTMLDoc(
 			/* [retval][out] */ IHTMLDoc **Value) = 0;
+
+		virtual /* [id] */ HRESULT __stdcall UploadFileEx(
+			/* [in] */ BSTR ServerDirectory,
+			/* [out] */ BSTR* FileName,
+			/* [retval][out] */ VARIANT_BOOL *OutRetVal) = 0;
+		virtual /* [id] */ HRESULT __stdcall Suspend() = 0;
+		virtual /* [id] */ HRESULT __stdcall Resume() = 0;
+		virtual /* [id] */ HRESULT __stdcall ForceOwnerWindow(
+			/* [in] */ long Wnd,
+			/* [in] */ VARIANT_BOOL All) = 0;
 	};
 
 	/* interface IBrowserInfo */
@@ -278,6 +288,13 @@ extern "C" {
 
 		virtual /* [id][propget] */ HRESULT __stdcall get_SelectedRule(
 			/* [retval][out] */ BSTR* Value) = 0;
+
+		virtual /* [id][propget] */ HRESULT __stdcall get_ExtraData(
+			/* [retval][out] */ BSTR *Value) = 0;
+
+		virtual /* [id] */ HRESULT __stdcall GetExtraDataValue(
+			/* [in] */ BSTR Name,
+			/* [retval][out] */ BSTR *Value) = 0;
 	};
 
 	/* interface IDevServer */
@@ -334,6 +351,18 @@ extern "C" {
 
 		virtual /* [id][propput] */ HRESULT __stdcall put_CursorVisible(
 			/* [in] */ VARIANT_BOOL Value) = 0;
+
+		virtual /* [id][propget] */ HRESULT __stdcall get_MouseWheelStepValue(
+			/* [retval][out] */ long *Value) = 0;
+
+		virtual /* [id][propput] */ HRESULT __stdcall put_MouseWheelStepValue(
+			/* [in] */ long Value) = 0;
+
+		virtual /* [id][propget] */ HRESULT __stdcall get_MouseWheelDirection(
+			/* [retval][out] */ long *Value) = 0;
+
+		virtual /* [id][propput] */ HRESULT __stdcall put_MouseWheelDirection(
+			/* [in] */ long Value) = 0;
 	};
 
 	/* interface IJSValue */
@@ -743,6 +772,9 @@ extern "C" {
 			/* [in] */ BSTR *Filename) = 0;
 
 		virtual /* [id] */ HRESULT __stdcall OnRecorderChanged(void) = 0;
+
+		virtual /* [id] */ HRESULT __stdcall OnUploadEnd(
+			/* [in] */ BSTR *Filename) = 0;
 	};
 
 	EXTERN_C const IID IID_IJSObjectEvents;
@@ -900,7 +932,7 @@ extern "C" {
 		virtual /* [id] */ HRESULT __stdcall CreateComponent(
 			/* [in] */ BSTR Id,
 			/* [in] */ BSTR Html,
-			/* [in] */ INT64 ReplaceWnd) = 0;
+			/* [in] */ unsigned int ReplaceWnd) = 0;
 
 		virtual /* [id] */ HRESULT __stdcall GetSafeURL(
 			/* [in] */ BSTR Filename,
@@ -962,6 +994,10 @@ public:
 	HRESULT __stdcall put_MouseMoveGestureAction(enum MouseMoveGestureAction Value);
 	HRESULT __stdcall get_CursorVisible(VARIANT_BOOL *Value);
 	HRESULT __stdcall put_CursorVisible(VARIANT_BOOL Value);
+	HRESULT __stdcall get_MouseWheelStepValue(long *Value);
+	HRESULT __stdcall put_MouseWheelStepValue(long Value);
+	HRESULT __stdcall get_MouseWheelDirection(long *Value);
+	HRESULT __stdcall put_MouseWheelDirection(long Value);
 
 	/// <summary>
 	/// Gets the MouseMoveGestureStyle value
@@ -996,6 +1032,32 @@ public:
 	/// Hides/shows the mouse pointer.
 	/// </summary>
 	void CursorVisible(bool value);
+
+	/// <summary>
+	/// Gets the the scroll speed used when the "mouse move" simulation
+	/// on a touch device is interpreted as a mouse wheel.
+	/// </summary>
+	long MouseWheelStepValue();
+
+	/// <summary>
+ 	/// Specifies the scroll speed when the "mouse move" simulation on a
+	/// touch device is interpreted as a mouse wheel. Default value is
+	/// 120. Lower values results in a smooth scrolling.
+	/// </summary>
+	void MouseWheelStepValue(long value);
+
+	/// <summary>
+	/// Gets the scroll direction when the "mouse move" simulation on a
+	/// touch device is interpreted as a mouse wheel.
+	/// </summary>
+	long MouseWheelDirection();
+
+	/// <summary>
+	/// Specifies the scroll direction when the "mouse move" simulation on a
+	/// touch device is interpreted as a mouse wheel. Set this to 1 (default)
+	/// to normal direction, or -1 to invert.
+	/// </summary>
+	void MouseWheelDirection(long value);
 };
 
 
@@ -1044,6 +1106,8 @@ public:
 	HRESULT __stdcall SetCookie(BSTR Name, BSTR Value, BSTR Expires);
 	HRESULT __stdcall get_Location(BSTR *Value);
 	HRESULT __stdcall get_SelectedRule(BSTR* Value);
+	HRESULT __stdcall get_ExtraData(BSTR *Value);
+	HRESULT __stdcall GetExtraDataValue(BSTR Name, BSTR *Value);
 
 	/// <summary>
 	/// Returns the width of the VirtualUI Viewer.
@@ -1139,6 +1203,17 @@ public:
 	/// Returns the selected Browser Rule.
 	/// </summary>
 	std::wstring SelectedRule();
+
+	/// <summary>
+	///  Returns aditional data from Browser (JSON format).
+	/// </summary>
+	std::wstring ExtraData();
+
+	/// <summary>
+	///  Returns a specific value from ExtraData by it's name.
+	/// </summary>
+	/// <param name="Name">Name of value to return.</param>
+	std::wstring GetExtraDataValue(std::wstring Name);
 };
 
 
@@ -1510,6 +1585,7 @@ private:
 	HRESULT __stdcall OnClose(void);
 	HRESULT __stdcall OnReceiveMessage(BSTR *Data);
 	HRESULT __stdcall OnDownloadEnd(BSTR *Filename);
+	HRESULT __stdcall OnUploadEnd(BSTR *Filename);
 	HRESULT __stdcall OnRecorderChanged(void);
 public:
 	VirtualUISink(VirtualUI* virtualUI);
@@ -1603,6 +1679,7 @@ public:
 	HRESULT __stdcall AllowExecute(BSTR Filename);
 	HRESULT __stdcall SetImageQualityByWnd(long Wnd, BSTR Class, long Quality);
 	HRESULT __stdcall Uploadfile(BSTR ServerDirectory);
+	HRESULT __stdcall UploadFileEx(BSTR ServerDirectory, BSTR* FileName, VARIANT_BOOL *OutRetVal);
 	HRESULT __stdcall TakeScreenshot(long Wnd, BSTR FileName, VARIANT_BOOL *OutRetVal);
 	HRESULT __stdcall ShowVirtualKeyboard(void);
 	HRESULT __stdcall get_Recorder(IRecorder **Value);
@@ -1634,7 +1711,7 @@ public:
 	/// end-user's web browser must established within the time
 	/// specified by Timeout parameter.
 	/// </remarks>
-    bool Start(int Timeout);
+	bool Start(int Timeout);
 
 	/// <summary>
 	/// Deactivates VirtualUI, closing the connection with the
@@ -1744,6 +1821,37 @@ public:
 	void Uploadfile();
 
 	/// <summary>
+	///   Selects a file from client machine, and it's uploaded to
+	///   ServerDirectory
+	/// </summary>
+	/// <param name="ServerDirectory">Destination directory in Server.</param>
+	/// <param name="FileName">Returns the full path of uploaded file.</param>
+	bool UploadFileEx(std::wstring ServerDirectory, std::wstring &FileName);
+
+	/// <summary>
+	///   Selects a file from client machine, and it's uploaded to VirtualUI
+	///   public path.
+	/// </summary>
+	/// <param name="FileName">Returns the full path of uploaded file.</param>
+	bool UploadFileEx(std::wstring &FileName);
+
+	/// <summary>
+	///   Suspends the UI streaming to the web browser
+	/// </summary>
+	HRESULT __stdcall Suspend();
+
+	/// <summary>
+	///   Resumes the UI streaming to the web browser
+	/// </summary>
+	HRESULT __stdcall Resume();
+
+	/// <summary>
+	///   Forces an owner window for all or modal windows.
+	/// </summary>
+	/// <param name="Wnd">The Window to be owner.</param>
+	HRESULT __stdcall ForceOwnerWindow(long Wnd, VARIANT_BOOL All);
+
+	/// <summary>
 	///   Takes a screenshot of a Window.
 	/// </summary>
 	/// <param name="Wnd">The Window to capture.</param>
@@ -1846,6 +1954,7 @@ public:
 	void(*OnClose)();
     void(*OnReceiveMessage)(std::wstring &Data);
     void(*OnDownloadEnd)(std::wstring &Filename);
+	void(*OnUploadEnd)(std::wstring &Filename);
 	void(*OnRecorderChanged)();
 };
 
@@ -2147,7 +2256,7 @@ private:
 	ULONG __stdcall Release();
 
 	HRESULT __stdcall CreateSessionURL(BSTR Url, BSTR Filename);
-	HRESULT __stdcall CreateComponent(BSTR Id, BSTR Html, INT64 ReplaceWnd);
+	HRESULT __stdcall CreateComponent(BSTR Id, BSTR Html, unsigned int ReplaceWnd);
 	HRESULT __stdcall GetSafeURL(BSTR Filename, int Minutes, BSTR* Value);
 	HRESULT __stdcall LoadScript(BSTR Url, BSTR Filename);
 	HRESULT __stdcall ImportHTML(BSTR Url, BSTR Filename);
@@ -2175,7 +2284,7 @@ public:
 	/// When ReplaceWnd is <> 0 and points to a valid window handle, the positioning of the main element
 	/// will follow the Wnd positioning, simulating an embedding.
 	/// </remarks>
-	void CreateComponent(std::wstring Id, std::wstring Html, INT64 ReplaceWnd);
+	void CreateComponent(std::wstring Id, std::wstring Html, unsigned int ReplaceWnd);
 
 	/// <summary>
 	/// Returns a safe, temporary and unique URL to access any local file.

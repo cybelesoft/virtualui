@@ -1,0 +1,51 @@
+<link rel="import" href="https://polygit2.appspot.com/components/polymer/polymer.html">
+<dom-module id="vui-webbrowser">
+    <template>
+        <style>
+            iframe
+            {
+                position:relative;
+                width:100%;
+                height:100%;
+                border:0;
+                background-color: white;
+            }
+        </style>
+        <iframe src="{{src}}"></iframe>
+    </template>
+
+    <script type="text/javascript">
+        var jsro = null;
+        var iframe = null;
+        Polymer({
+            is: "vui-webbrowser",
+            'attached': function (e) {
+                iframe = document.querySelector("iframe");
+                startJsRO(this.id);
+            }
+        });
+        function startJsRO(controlId) {
+            jsro = new Thinfinity.JsRO();
+            // -- Properties
+            jsro.on('model:' + controlId + '.url', 'changed', function (url) {              
+            });
+            jsro.on(controlId, "go", function () {
+                iframe.src = jsro.model[controlId].url;
+            });
+            jsro.on(controlId, "prev", function () {
+                iframe.contentWindow.history.back();
+            });
+            jsro.on(controlId, "next", function () {
+                iframe.contentWindow.history.go(1);
+            });
+            
+            iframe.onpageshow = function (e) {
+                jsro.model[controlId].pageshow(iframe.contentWindow.location.href);
+            };
+            iframe.onpagehide = function (e) {
+                jsro.model[controlId].pagehide(iframe.contentWindow.location.href);
+            };
+
+        };
+    </script>
+</dom-module>

@@ -1,0 +1,109 @@
+﻿<link rel="import" href="https://polygit2.appspot.com/components/polymer/polymer.html">
+<dom-module id="vui-video">
+    <template>
+        <style>
+            video
+            {
+                position:absolute;
+                width:100%;
+                height:100%;
+            }
+        </style>
+        <div>
+            <video src="{{src}}"></video>
+        </div>
+    </template>
+
+    <script type="text/javascript">
+        var jsro = null;
+        var video = null;
+        Polymer({
+            is: "vui-video",
+            'attached': function (e) {
+                video = this.querySelector("video");
+                startJsRO(this.id);
+            }
+        });
+        function startJsRO(controlId) {
+            jsro = new Thinfinity.JsRO();
+            // -- Properties
+            jsro.on('model:' + controlId + '.position', 'changed', function (position) {
+                video.currentTime = position.value;
+            });
+            jsro.on('model:' + controlId + '.src', 'changed', function (src) {
+                if (src.value != '') {
+                    video.src = src.value;
+                }
+            });
+            // -- Events
+            jsro.on(controlId, "play", function () {
+                video.play();
+            });
+            jsro.on(controlId, "pause", function () {
+                video.pause();
+            });
+            jsro.on(controlId, "stop", function () {
+                video.pause();
+                video.currentTime = 0.0;
+
+            });
+
+            // -- Video Events;
+            // -- ====================================================================
+            // -- Duration change
+            video.ondurationchange = function (e) {
+                jsro.model[controlId]['state'] = 'Duration Change: ' + video.duration;
+                jsro.model[controlId]['length'] = video.duration;
+                jsro.model[controlId]['currentPosition'] = 0.0;
+            };
+            // -- Video is ended.
+            video.onended = function (e) {
+                jsro.model[controlId]['state'] = 'Ended';
+            };
+            // -- Has been paused.
+            video.onpause = function (e) {
+                jsro.model[controlId]['state'] = 'Paused';
+            };
+            // -- Started is not longer paused.
+            video.onplay = function (e) {
+                jsro.model[controlId]['state'] = 'Playing';
+            };
+            // -- Playing after having been paused or stopped.
+            video.onplaying = function (e) {
+                jsro.model[controlId]['state'] = 'Playing';
+            };
+            // -- Playback position change
+            video.ontimeupdate = function (e) {
+                jsro.model[controlId]['currentPosition'] = video.currentTime;
+            };
+            // -- Not getting media data
+            video.onsuspend = function (e) {
+                jsro.model[controlId]['state'] = 'Suspend';
+            };
+            //-- Delayed pending
+            video.onwaiting = function (e) {
+                jsro.model[controlId]['state'] = 'Waiting...';
+            };
+            // -- Load Start
+            video.onloadstart = function (e) {
+                jsro.model[controlId]['state'] = 'Loading...';
+            };
+            // -- First frame of the media has finished loading.
+            video.onloadeddata = function (e) {
+                jsro.model[controlId]['state'] = 'Loaded';
+            };
+            // -- Error.
+            video.onerror = function (e) {
+                function getErrorName(code) {
+                    for (var attrib in video.error) {
+                        if (video.error[attrib] == code) {
+                            return attrib;
+                        }
+                    }
+                };
+                var errorName = getErrorName(video.error.code)
+                jsro.model[controlId]['state'] = 'Error - ' + errorName;
+            }
+        };
+    </script>
+</dom-module>

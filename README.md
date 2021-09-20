@@ -8,13 +8,84 @@ If you want to know more about *Thinfinity VirtualUI*, please visit https://www.
 
 This repository contains source code and additional resources of:
 
-- **Thinfinity VirtualUI native libraries** for some of the most popular Windows desktop development languages.
+- **Thinfinity VirtualUI native libraries and Demo applications** for some of the most popular Windows desktop development languages.
 - **Web Components** with their respective demo applications.
 
-###Lib
 
-It contains native VirtualUI libraries for Delphi, C++, Visual Basic 6 and .Net (CSharp and VB.Net) languages.
+###C#
+
+Contains demos for C# and VirtualUI libraries.
+
 These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+###C++
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+###C++ Builder
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###Delphi
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###External Auth
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###Python
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###VB.Net
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###VB6
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###Delphi
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###VFP
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
+
+###VFP9
+
+Contains demos for C# and VirtualUI libraries.
+
+These libraries must be referenced within the application source code and require Thinfinity VirtualUI installed.
+
 
 ###WebComponents
 

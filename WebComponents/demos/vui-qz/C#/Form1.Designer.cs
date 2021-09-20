@@ -37,13 +37,15 @@
             this.bSettings = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bInit
             // 
-            this.bInit.Location = new System.Drawing.Point(33, 22);
+            this.bInit.Location = new System.Drawing.Point(32, 64);
             this.bInit.Name = "bInit";
             this.bInit.Size = new System.Drawing.Size(244, 27);
             this.bInit.TabIndex = 0;
@@ -58,7 +60,7 @@
             this.panel1.Controls.Add(this.bPrintZPL);
             this.panel1.Controls.Add(this.bPrintPDF);
             this.panel1.Controls.Add(this.bSettings);
-            this.panel1.Location = new System.Drawing.Point(1, 55);
+            this.panel1.Location = new System.Drawing.Point(0, 109);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(309, 154);
             this.panel1.TabIndex = 6;
@@ -84,7 +86,7 @@
             // 
             // bPrintZPL
             // 
-            this.bPrintZPL.Location = new System.Drawing.Point(182, 118);
+            this.bPrintZPL.Location = new System.Drawing.Point(182, 100);
             this.bPrintZPL.Name = "bPrintZPL";
             this.bPrintZPL.Size = new System.Drawing.Size(94, 27);
             this.bPrintZPL.TabIndex = 8;
@@ -94,7 +96,7 @@
             // 
             // bPrintPDF
             // 
-            this.bPrintPDF.Location = new System.Drawing.Point(32, 118);
+            this.bPrintPDF.Location = new System.Drawing.Point(32, 100);
             this.bPrintPDF.Name = "bPrintPDF";
             this.bPrintPDF.Size = new System.Drawing.Size(90, 27);
             this.bPrintPDF.TabIndex = 7;
@@ -104,7 +106,7 @@
             // 
             // bSettings
             // 
-            this.bSettings.Location = new System.Drawing.Point(32, 76);
+            this.bSettings.Location = new System.Drawing.Point(32, 58);
             this.bSettings.Name = "bSettings";
             this.bSettings.Size = new System.Drawing.Size(244, 27);
             this.bSettings.TabIndex = 6;
@@ -116,9 +118,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 212);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 266);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(311, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(309, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -127,16 +129,37 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(32, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(247, 29);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "This demo requires the installation of \"QZ\" tray program from";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(97, 34);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(60, 13);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "http://qz.io";
+            this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 234);
+            this.ClientSize = new System.Drawing.Size(309, 288);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bInit);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Remote printing test";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -157,6 +180,8 @@
         private System.Windows.Forms.Button bSettings;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

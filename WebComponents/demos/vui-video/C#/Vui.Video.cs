@@ -14,7 +14,6 @@ namespace Cybele.Thinfinity.WebComponents
         private string m_Xtagdir;
         private JSObject m_video;
         private String m_src;
-
         private VirtualUI vui;
 
         public VuiVideo()
@@ -26,12 +25,19 @@ namespace Cybele.Thinfinity.WebComponents
             {
                 m_Xtagdir = di.FullName + @"\x-tag\";
                 if (Directory.Exists(m_Xtagdir)) return;
-                di = di.Parent;                
+                di = di.Parent;
+            }
+        }
+        public string Dir
+        {
+            get
+            {
+                return new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).ToString();
             }
         }
         public string XTagDir
         {
-            get 
+            get
             {
                 return m_Xtagdir;
             }
@@ -39,26 +45,22 @@ namespace Cybele.Thinfinity.WebComponents
                 m_Xtagdir = value;
             }
         }
-        public float Position { 
-            get 
+        public float Position {
+            get
             {
                 return m_video.Properties["position"].AsFloat;
-            } 
-            set 
-            {
-                m_video.Properties["position"].AsFloat = value;
             }
         }
-        public float Length { 
-            get 
+        public float Length {
+            get
             {
-                return m_video.Properties["length"].AsFloat; 
+                return m_video.Properties["length"].AsFloat;
             }
         }
         public String State {
-            get 
+            get
             {
-                return m_video.Properties["state"].AsString; 
+                return m_video.Properties["state"].AsString;
             }
         }
         public void Play()
@@ -110,7 +112,7 @@ namespace Cybele.Thinfinity.WebComponents
             m_video = new JSObject(ctrl.Name);
             m_video.OnPropertyChange += m_video_OnPropertyChange;
             // -- Adding properties, methods and events.
-            m_video.Properties.Add("state").AsString = "";
+            m_video.Properties.Add("state").AsString = "Ready";
             m_video.Properties.Add("position").AsFloat = 0.0f;
             m_video.Properties.Add("length").AsFloat = 0.0f;
             m_video.Properties.Add("src").AsString = "";
@@ -119,13 +121,15 @@ namespace Cybele.Thinfinity.WebComponents
             m_video.Events.Add("stop");
             m_video.Events.Add("move").AddArgument("position",IJSDataType.JSDT_FLOAT);
             m_video.ApplyModel();
+
+
         }
 
         void m_video_OnPropertyChange(object sender, JSPropertyChangeEventArgs e)
         {
+            if ((e.Prop.Name == "length") && (OnLengthChanged != null)) OnLengthChanged(this, new EventArgs());
             if ((e.Prop.Name == "state") && (OnStateChanged != null)) OnStateChanged(this, new EventArgs());
             if ((e.Prop.Name == "position") && (OnPositionChanged != null)) OnPositionChanged(this, new EventArgs());
-            if ((e.Prop.Name == "length") && (OnLengthChanged != null)) OnLengthChanged(this, new EventArgs());
         }
     }
 }

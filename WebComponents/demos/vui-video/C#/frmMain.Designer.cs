@@ -38,6 +38,9 @@
             this.btnPlay = new System.Windows.Forms.Button();
             this.panelXVideo = new System.Windows.Forms.Panel();
             this.cmbMp4 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtXTagPath = new System.Windows.Forms.TextBox();
+            this.lblConsole = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider)).BeginInit();
             this.SuspendLayout();
@@ -66,12 +69,13 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblConsole);
             this.groupBox1.Controls.Add(this.slider);
             this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnPlay);
-            this.groupBox1.Location = new System.Drawing.Point(15, 49);
+            this.groupBox1.Location = new System.Drawing.Point(15, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(640, 95);
             this.groupBox1.TabIndex = 7;
@@ -131,9 +135,9 @@
             this.panelXVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelXVideo.Location = new System.Drawing.Point(15, 150);
+            this.panelXVideo.Location = new System.Drawing.Point(15, 168);
             this.panelXVideo.Name = "panelXVideo";
-            this.panelXVideo.Size = new System.Drawing.Size(640, 360);
+            this.panelXVideo.Size = new System.Drawing.Size(640, 421);
             this.panelXVideo.TabIndex = 8;
             // 
             // cmbMp4
@@ -141,28 +145,44 @@
             this.cmbMp4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbMp4.FormattingEnabled = true;
-            this.cmbMp4.Items.AddRange(new object[] {
-            "http://www.sample-videos.com/video/mp4/480/big_buck_bunny_480p_2mb.mp4",
-            "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_72" +
-                "00K.MP4",
-            "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_72" +
-                "00K_short.MP4",
-            "http://download.openbricks.org/sample/H264/h264_Linkin_Park-Leave_Out_All_The_Res" +
-                "t.mp4",
-            "http://download.wavetlan.com/SVV/Media/HTTP/H264/Talkinghead_Media/H264_test1_Tal" +
-                "kinghead_mp4_480x360.mp4",
-            "http://download.wavetlan.com/SVV/Media/HTTP/H264/Talkinghead_Media/H264_test3_Tal" +
-                "kingheadclipped_mp4_480x360.mp4"});
             this.cmbMp4.Location = new System.Drawing.Point(50, 15);
             this.cmbMp4.Name = "cmbMp4";
             this.cmbMp4.Size = new System.Drawing.Size(559, 21);
             this.cmbMp4.TabIndex = 9;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "X-Tag Path:";
+            // 
+            // txtXTagPath
+            // 
+            this.txtXTagPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtXTagPath.Location = new System.Drawing.Point(84, 43);
+            this.txtXTagPath.Name = "txtXTagPath";
+            this.txtXTagPath.ReadOnly = true;
+            this.txtXTagPath.Size = new System.Drawing.Size(525, 20);
+            this.txtXTagPath.TabIndex = 11;
+            // 
+            // lblConsole
+            // 
+            this.lblConsole.Location = new System.Drawing.Point(19, 77);
+            this.lblConsole.Name = "lblConsole";
+            this.lblConsole.Size = new System.Drawing.Size(605, 15);
+            this.lblConsole.TabIndex = 13;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 526);
+            this.ClientSize = new System.Drawing.Size(666, 601);
+            this.Controls.Add(this.txtXTagPath);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbMp4);
             this.Controls.Add(this.panelXVideo);
             this.Controls.Add(this.groupBox1);
@@ -191,6 +211,9 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.TrackBar slider;
         private System.Windows.Forms.ComboBox cmbMp4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtXTagPath;
+        private System.Windows.Forms.Label lblConsole;
     }
 }
 

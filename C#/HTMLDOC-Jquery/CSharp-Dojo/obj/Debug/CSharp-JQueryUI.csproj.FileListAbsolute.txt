@@ -1,0 +1,10 @@
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\bin\Debug\CSharp-JQueryUI.exe.config
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\bin\Debug\CSharp-JQueryUI.exe
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\bin\Debug\CSharp-JQueryUI.pdb
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp-JQueryUI.csproj.AssemblyReference.cache
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp_JQueryUI.Form1.resources
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp_JQueryUI.Properties.Resources.resources
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp-JQueryUI.csproj.GenerateResource.cache
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp-JQueryUI.csproj.CoreCompileInputs.cache
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp-JQueryUI.exe
+C:\APPS\OWN APPS\CSharp-JQueryUI\CSharp-JQueryUI\obj\Debug\CSharp-JQueryUI.pdb

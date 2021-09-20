@@ -17,6 +17,8 @@ type
     Button2: TButton;
     Button4: TButton;
     StatusBar1: TStatusBar;
+    Label2: TLabel;
+    Label3: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure cmbPrintersClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -24,6 +26,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Label3Click(Sender: TObject);
   private
     { Private declarations }
     FQz : TVuiQz;
@@ -40,6 +43,8 @@ var
 
 
 implementation
+
+uses ShellApi;
 
 const
   QZ_RUNTIME_CERTIFICATE =
@@ -112,6 +117,14 @@ end;
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
   FQz.Free;
+end;
+
+procedure TForm1.Label3Click(Sender: TObject);
+var
+  Url : string;
+begin
+  Url := (Sender as TLabel).Caption;
+  ShellExecute(0,'open',PWideChar(Url), '',nil,SW_SHOWNORMAL);
 end;
 
 procedure TForm1.EnablePanel(Panel:TWinControl;Value:Boolean);

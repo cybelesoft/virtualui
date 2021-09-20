@@ -1,0 +1,9 @@
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\C#\obj\Debug\JsROAudio.frmJsROAudio.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\C#\obj\Debug\JsROAudio.Properties.Resources.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\C#\obj\Debug\JsROAudio.csproj.GenerateResource.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\C#\obj\Debug\JsROAudio.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\JsROAudio.exe.config
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\C#\obj\Debug\JsROAudio.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\C#\obj\Debug\JsROAudio.pdb
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\JsROAudio.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\WebComponents\demos\vui-audio\JsROAudio.pdb
