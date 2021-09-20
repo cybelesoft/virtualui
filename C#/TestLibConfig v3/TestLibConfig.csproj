@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9619D98A-C9AB-4CAA-B943-F26274E8B96F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestLibConfig</RootNamespace>
+    <AssemblyName>TestLibConfig</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Thinfinity_Virtual_UI.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DlgBinding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgBinding.Designer.cs">
+      <DependentUpon>DlgBinding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlgBrokerPool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgBrokerPool.Designer.cs">
+      <DependentUpon>DlgBrokerPool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlgCertificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgCertificate.Designer.cs">
+      <DependentUpon>DlgCertificate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlgInputText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgInputText.Designer.cs">
+      <DependentUpon>DlgInputText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlgProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlgProfile.Designer.cs">
+      <DependentUpon>DlgProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddAuthMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddAuthMethod.Designer.cs">
+      <DependentUpon>FormAddAuthMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAuthentication.Designer.cs">
+      <DependentUpon>FormAuthentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBindings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBindings.Designer.cs">
+      <DependentUpon>FormBindings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBroker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBroker.Designer.cs">
+      <DependentUpon>FormBroker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBruteForce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBruteForce.Designer.cs">
+      <DependentUpon>FormBruteForce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFolders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFolders.Designer.cs">
+      <DependentUpon>FormFolders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLicense.Designer.cs">
+      <DependentUpon>FormLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProfiles.Designer.cs">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSessions.Designer.cs">
+      <DependentUpon>FormSessions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Thinfinity.VirtualUI.Settings.cs" />
+    <EmbeddedResource Include="DlgBinding.resx">
+      <DependentUpon>DlgBinding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlgBrokerPool.resx">
+      <DependentUpon>DlgBrokerPool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlgCertificate.resx">
+      <DependentUpon>DlgCertificate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlgInputText.resx">
+      <DependentUpon>DlgInputText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlgProfile.resx">
+      <DependentUpon>DlgProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddAuthMethod.resx">
+      <DependentUpon>FormAddAuthMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAuthentication.resx">
+      <DependentUpon>FormAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBindings.resx">
+      <DependentUpon>FormBindings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBroker.resx">
+      <DependentUpon>FormBroker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBruteForce.resx">
+      <DependentUpon>FormBruteForce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFolders.resx">
+      <DependentUpon>FormFolders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLicense.resx">
+      <DependentUpon>FormLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProfiles.resx">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSessions.resx">
+      <DependentUpon>FormSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Thinfinity_Virtual_UI.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

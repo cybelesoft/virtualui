@@ -1,0 +1,6 @@
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\ExternalAuthProvider\IniFile\bin\x64\Debug\ExtAuth.IniFiles.dll
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\ExternalAuthProvider\IniFile\bin\x64\Debug\ExtAuth.IniFiles.pdb
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\ExternalAuthProvider\IniFile\obj\x64\Debug\ExtAuth.IniFiles.csproj.AssemblyReference.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\ExternalAuthProvider\IniFile\obj\x64\Debug\ExtAuth.IniFiles.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\ExternalAuthProvider\IniFile\obj\x64\Debug\ExtAuth.IniFiles.dll
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\ExternalAuthProvider\IniFile\obj\x64\Debug\ExtAuth.IniFiles.pdb

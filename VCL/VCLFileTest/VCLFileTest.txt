@@ -1,0 +1,11 @@
+Thinfinity(R) VirtualUI(TM)
+
+Instant GUI Remoting and Web Integration for Windows Apps
+=========================================================
+
+Thinfinity VirtualUI empowers developers who are confronted with a need for deep modernization of existing Windows-based apps with a dual- approach tool: instant GUI remoting and full web integration.
+When it comes to GUI remoting, Thinfinity VirtualUI offers a single-line-of- code user interface remoting solution for self-developed applications, making possible to deliver them as dual-platform Windows/HTML5 apps. These applications can keep their standard Windows environment behavior or, alternatively, be hosted on a Thinfinity VirtualUI environment to be remotely accessed from any modern web browser in a multi-user, multi- instance manner.
+Regarding its full web integration capabilities, Thinfinity VirtualUI takes advantage of the newly developed jsRO(Javascript Remote Objects) framework to facilitate two-way data integration between the application and the browser. jsRO makes this possible by enabling the creation of remotable server objects, with their properties, methods and events mirrored to the web as native javascript objects.
+Thinfinity VirtualUI makes a huge leap forward, and boosts the concept of GUI remoting with the addition of real, smooth full web integration, filling a void that no other existing remoting tool has ever addressed!
+
+More: http://www.cybelesoft.com/thinfinity/virtualui/

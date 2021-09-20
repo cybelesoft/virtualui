@@ -1,0 +1,9 @@
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\bin\Debug\PrintManyPages.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\bin\Debug\PrintManyPages.pdb
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.csproj.AssemblyReference.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.Form1.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.Properties.Resources.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.csproj.GenerateResource.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\PrintManyPages\obj\Debug\PrintManyPages.pdb

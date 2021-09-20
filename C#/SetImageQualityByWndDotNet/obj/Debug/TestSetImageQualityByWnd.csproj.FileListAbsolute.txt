@@ -1,0 +1,10 @@
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\bin\Debug\TestSetImageQualityByWnd.exe.config
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\bin\Debug\TestSetImageQualityByWnd.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\bin\Debug\TestSetImageQualityByWnd.pdb
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.csproj.AssemblyReference.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.Form1.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.Properties.Resources.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.csproj.GenerateResource.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\Tests\TestSetImageQualityByWndDotNet\obj\Debug\TestSetImageQualityByWnd.pdb

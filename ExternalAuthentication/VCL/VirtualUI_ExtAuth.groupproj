@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E9A59FFC-CFB0-4EE5-8A09-8137F71D05C9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Thinfinity.Server.ExternalAuth.WinLogon.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Thinfinity.Server.ExternalAuth.IniFile.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Thinfinity.Server.ExternalAuth.Radius.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\server\Thinfinity.VirtualUI.Server.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Thinfinity_Server_ExternalAuth_WinLogon">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.WinLogon.dproj"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_WinLogon:Clean">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.WinLogon.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_WinLogon:Make">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.WinLogon.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_IniFile">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.IniFile.dproj"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_IniFile:Clean">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.IniFile.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_IniFile:Make">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.IniFile.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_Radius">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.Radius.dproj"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_Radius:Clean">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.Radius.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Thinfinity_Server_ExternalAuth_Radius:Make">
+        <MSBuild Projects="Thinfinity.Server.ExternalAuth.Radius.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Thinfinity_VirtualUI_Server">
+        <MSBuild Projects="..\..\..\server\Thinfinity.VirtualUI.Server.dproj"/>
+    </Target>
+    <Target Name="Thinfinity_VirtualUI_Server:Clean">
+        <MSBuild Projects="..\..\..\server\Thinfinity.VirtualUI.Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Thinfinity_VirtualUI_Server:Make">
+        <MSBuild Projects="..\..\..\server\Thinfinity.VirtualUI.Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Thinfinity_Server_ExternalAuth_WinLogon;Thinfinity_Server_ExternalAuth_IniFile;Thinfinity_Server_ExternalAuth_Radius;Thinfinity_VirtualUI_Server"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Thinfinity_Server_ExternalAuth_WinLogon:Clean;Thinfinity_Server_ExternalAuth_IniFile:Clean;Thinfinity_Server_ExternalAuth_Radius:Clean;Thinfinity_VirtualUI_Server:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Thinfinity_Server_ExternalAuth_WinLogon:Make;Thinfinity_Server_ExternalAuth_IniFile:Make;Thinfinity_Server_ExternalAuth_Radius:Make;Thinfinity_VirtualUI_Server:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

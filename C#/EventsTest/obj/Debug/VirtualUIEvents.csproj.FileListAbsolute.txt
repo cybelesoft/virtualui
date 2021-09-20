@@ -1,0 +1,10 @@
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\bin\Debug\VirtualUIEvents.exe.config
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\bin\Debug\VirtualUIEvents.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\bin\Debug\VirtualUIEvents.pdb
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.csproj.AssemblyReference.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.Form1.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.Properties.Resources.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.csproj.GenerateResource.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\C#\EventsTest\obj\Debug\VirtualUIEvents.pdb

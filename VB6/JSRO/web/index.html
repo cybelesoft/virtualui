@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <title>Thinfinity VirtualUI</title>
+    <link rel="apple-touch-icon" href="images/icon.png" />
+    <link rel="stylesheet" type="text/css" href="css/splash.css" />
+    <link rel="stylesheet" type="text/css" href="css/thinfinity.virtualui.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" type="text/css" href="css/thinfinity.dockmenu.css" />
+    <link rel="stylesheet" type="text/css" href="common/css/print.dialog.css" />
+    <link rel="stylesheet" type="text/css" href="css/jsro_demo.css" />
+    <script src="virtualui.sdk.min.js" type="text/javascript"></script>
+    <script src="js/splash.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/jsro.js" type="text/javascript"></script>
+    <script>
+        var encPostData = "<%=@ENC_POST_DATA%>";
+    </script>
+</head>
+
+<body style="background-color: #f2f2f2;">
+    <div id="webcontent">
+        <div id="virtualui-container">
+            <div id="virtualui" style="position:relative;display:none;"></div>
+        </div>
+        <div id="messages">
+            <div id="messageField">
+                <input type="text" id="messageText" />
+                <input type="button" id="messageSend" value="Send" onclick="sendMessageToApp()" />
+            </div>
+            <div id="messageLog">
+            	<p></i>Message log:</i></p>
+            </div>
+        </div>
+    </div>
+
+    <!--Server Message Template Popup-->
+    <div id="serverMsgDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="serverMsgCaption" class="title">
+            <span id="serverMsgTitle">Server Message</span>
+            <div id="serverMsgBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body" style="min-height:100px;">
+            <div class="inputContainer" style="min-height:50px;">
+                <div class="row">
+                    <div class="fileContainer">
+                        <p id="serverMsgText"></p> <!--serverMsgDefault consts-->
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="serverMsgBtnCancel" class="button" value="Close" />
+            </div>
+        </div>
+    </div>
+
+    <!--Open Link Template Popup-->
+    <div id="openLinkDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="openLinkTitle" class="title">
+            <span>Open Link</span>
+            <div id="openLinkBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body" style="min-height:100px;">
+            <div class="inputContainer" style="min-height:50px;">
+                <div class="row">
+                    <div class="fileContainer">
+                        <p id="openLinkMsgError"></p> <!--popupBlockedMsg consts-->
+                        <a id="openLinkUrl"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="openLinkBtnCancel" class="button" value="Close" />
+            </div>
+        </div>
+    </div>
+
+    <!--Open Files Template Popup-->
+    <div id="openDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="openTitle" class="title">
+            <span>Open File</span>
+            <div id="openBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body" style="min-height:100px;">
+            <div class="inputContainer" style="min-height:50px;">
+                <div class="row">
+                    <div class="fileContainer">
+                        <p id="openMsgError"></p><!--popupBlockedMsg consts-->
+                        <a id="openLink"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="openBtnCancel" class="button" value="Close" />
+            </div>
+        </div>
+    </div>
+
+    <!--Upload Files Template Popup-->
+    <div id="uploadDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="uploadTitle" class="title">
+            <span>Upload File</span>
+            <div id="uploadBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body">
+            <div class="inputContainer">
+                <div class="row">
+                    <div class="label">Filename:</div>
+                    <input id="uploadInputFileName" type="text" class="textField fileselector" />
+                </div>
+                <div class="row">
+                    <div class="label">Open as type:</div>
+                    <select id="uploadCmbFileFilter" class="textField cmbFilter"></select>
+                </div>
+                <div class="row">
+                    <div class="label"></div>
+                    <div id="uploadProgressContainer" class="textField progressContainer">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label"></div>
+                    <div id="uploadTxtErrorMsg" class="error textField"></div> <!--invalidFileType, noFileSelected consts-->
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="uploadBtnOk" class="button" value="Ok" />
+                <input type="button" id="uploadBtnCancel" class="button" value="Close" />
+            </div>
+        </div>
+    </div>
+
+    <!--Save Files Template Popup-->
+    <div id="saveDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="saveTitle" class="title">
+            <span>Download File</span>
+            <div id="saveBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body">
+            <div class="inputContainer">
+                <div class="row">
+                    <div class="label">Filename:</div>
+                    <input id="saveInputFileName" type="text" class="textField" />
+                </div>
+                <div class="row">
+                    <div class="label">Save as type:</div>
+                    <select id="saveCmbFileFilter" class="textField cmbFilter"></select>
+                </div>
+                <div class="row">
+                    <div class="label"></div>
+                    <div id="saveTxtErrorMsg" class="error textField"></div>
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="saveBtnOk" class="button" value="Ok" />
+                <input type="button" id="saveBtnCancel" class="button" value="Close" />
+            </div>
+        </div>
+    </div>
+
+    <!--Report Error Template Popup-->
+    <div id="errorReportDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="errorReportTitle" class="title">
+            <span>Error Reporting</span>
+            <div id="errorReportBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body">
+            <div class="inputContainer">
+                <div class="row">
+                    <div class="label">Subject:</div>
+                    <textarea id="errorReportSubject" class="textField subject"></textarea>
+                </div>
+                <div class="row">
+                    <div class="label">Description:</div>
+                    <textarea id="errorReportDescription" class="textField description"></textarea>
+                </div>
+                <div class="row">
+                    <div class="label">Details:</div>
+                    <textarea id="errorReportDetails" class="textField details"></textarea>
+                </div>
+                <div class="row">
+                    <div class="label"></div>
+                    <div class="error textField terms">The data that will be attached to this report does not include any Personally Identifiable Information (PII).</div>
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="errorReportBtnSend" class="button" value="Send" />
+                <input type="button" id="errorReportBtnCancel" class="button" value="Cancel" />
+            </div>
+        </div>
+    </div>
+
+    <!--Error Message Template Popup-->
+    <div id="errorMsgDialog" class="systemPopup systemDlg popup" style="z-index:0;visibility:hidden;display:none;">
+        <div id="errorMsgCaption" class="title">
+            <span id="errorMsgTitle"></span>
+            <div id="errorMsgBtnClose" class="closeBtn"></div>
+        </div>
+        <div class="body" style="min-height:100px;">
+            <div class="inputContainer" style="min-height:50px;">
+                <div class="row"></div>
+                <p id="errorMsgTextError"></p> <!--unknownError consts-->
+            </div>
+            <div class="buttonsContainer">
+                <input type="button" id="errorMsgBtnCancel" class="button" value="Cancel" />
+            </div>
+        </div>
+    </div>
+
+    <!--Print Template Popup -->
+    <div id="printGrowUIDialog" class="growlUI" style="display:none;cursor:pointer;">
+        <span class="title">Preparing document, please wait.</span>
+        <div id="printGrowUIOptions1" class="printGrowUIOptions">
+            <span class="msg">Bypass preview dialog</span>
+            <div id="printGrowUIbtnActive" class="option active" title="Bypass Print Preview Dialog">ON</div>
+            <div id="printGrowUIbtnInactive" class="option inactive" title="Do not bypass Print Preview Dialog">OFF</div>
+        </div>
+    </div>
+
+    <div id="printGrowUIErrorDialog" class="growlUI growlUIError" style="display:none;cursor:pointer;">
+        <span class="title">Print error.</span>
+        <div id="printGrowUIOptions2" class="printGrowUIOptions">
+            <span class="msg">Cannot print current document, please try again.</span>
+        </div>
+    </div>
+
+    <div id="printDialogPreviewContainer" class="center" style="display:none;">
+        <span id="" class="title">Preview</span>
+        <div id="printDialogBodyContainer" class="bodyContainer">
+            <!--if ((agentInfo.isIOS == true) && (agentInfo.isSafari == true)) {-->
+            <div id="printDialogIFrameContainer">
+                <iframe id="printDialogFileContainer" frameborder="0"></iframe>
+            </div>
+            <div id="printDialogPDFNotSupported">
+                <div id="printDialogSupportReader">
+                    <img class="adobe" style="border:0px;" onclick="window.open('http://get.adobe.com/reader/','_blank');" />
+                    <br />
+                    <a target="_blank" href="http://get.adobe.com/reader/">Get Adobe Reader</a>
+                </div>
+                <div id="printDialogNotSupportReader">
+                    <img class="generic" style="border:0px;" />
+                    <br />
+                    <span>Preview is not supported.</span>
+                </div>
+            </div>
+
+        </div>
+        <div id="printDialogFooterContainer">
+            <div id="printDialogModeContainer" class="radioContainer">
+                <input id="printDialogGCP" type="radio" name="printMode" />
+                <span id="printDialogGCPLabel">Google Cloud Print</span>
+                <input id="printDialogDirect" type="radio" name="printMode" checked="checked" />
+                <span id="printDialogDirectLabel">Direct Print</span>
+                <input id="printDialogGCPCheckbox" type="checkbox" />
+                <span id="printDialogGCPCheckboxLabel">Google Cloud Print</span>
+            </div>
+
+            <div class="buttonsContainer">
+                <input type="button" id="printDialogBtnCancel" class="button" value="Cancel" />
+                <input type="button" id="printDialogBtnOk" class="button" value="OK" />
+                <input type="button" id="printDialogBtnClose" class="button" value="Close" />
+                <input type="button" id="printDialogBtnPrint" class="button" value="Print" />
+            </div>
+
+            <div class="footer">
+                <input type="checkbox" id="printDialogPrintMethod" />
+                <label for="printDialogPrintMethod" id="printDialogPrintMethodLabel">Bypass this dialog (you can change this option later)</label>
+            </div>
+        </div>
+    </div>
+    <!--Print Template Popup -->
+</body>
+</html>

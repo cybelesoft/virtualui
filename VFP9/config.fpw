@@ -1,0 +1,65 @@
+* CONFIG.FPW for C:\SOURCE\APPBRIDGE\SOURCES\DEMOS\VFP\VFPSAMPLE.PJX
+
+* This file is a generated, framework-enabling component
+* created by APPBUILDER 
+* (c) Microsoft Corporation
+
+
+* This file should contain the settings 
+* appropriate to your project
+* and be added in to the project/exe
+* or installed in the EXE directory
+
+* It overrides registry settings
+
+* You can use the -C switch or FOXPROWCFG environmental
+* variables to point to a config file by name, and
+* and the FOXPROSWX variable also handles -C among
+* the other switches.
+
+SCREEN = OFF
+TITLE = VFPSample
+
+* Change this to suit:
+* TMPFILES = *<GETENV("TEMP")>*
+* or set EDITWORK,SORTWORK,PROGWORK individually
+* note: these should never be set in a CONFIG.FPW
+* built into your EXE! See above for ways of pointing
+* to a CONFIG file.
+
+* To specify a startup program, possibly temporarily,
+* on the way into your app:
+_STARTUP = ""
+
+* to eliminate load time:
+_BROWSER = ""
+_SPELLCHK = ""
+_GENMENU = ""
+_GENGRAPH = ""
+_GENXTAB = ""
+_COVERAGE = ""
+_SCCTEXT = ""
+_CONVERTER = ""
+_TRANSPORTER = ""
+_BUILDER = ""
+_WIZARD = ""
+
+* other special CONFIG.FPW settings you may wish to change:
+* (these are the defaults)
+MVCOUNT = 1025 
+OUTSHOW = ON   
+
+* Set other global settings here if you like, for example:
+RESOURCE = OFF
+_THROTTLE = 0
+
+* See the application object's SetDataSessionSets() method
+* for some additional settings you
+* may like to use in your config file.
+* The following are not the default settings, 
+* (and ordinarily will be taken care of in the 
+* Load of private-session forms and formsets):
+TALK = OFF
+MULTILOCKS = ON
+EXCLUSIVE = OFF
+SAFETY = OFF

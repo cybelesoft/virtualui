@@ -1,0 +1,12 @@
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\bin\Debug\VirtualUIEvents.exe.config
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\bin\Debug\VirtualUIEvents.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\bin\Debug\VirtualUIEvents.pdb
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\bin\Debug\VirtualUIEvents.xml
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.vbproj.AssemblyReference.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.Form1.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.Resources.resources
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.vbproj.GenerateResource.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.vbproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.exe
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.xml
+C:\WORK\GitHub\dev-demos\VirtualUI\VB.NET\EventsTest\obj\Debug\VirtualUIEvents.pdb
