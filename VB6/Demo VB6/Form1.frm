@@ -169,6 +169,10 @@ Private Sub DownloadFile_Click()
     'https://files.cybelesoft.com/manuals/symbolreference/index.html?00648.html
     VUI.DownloadFile CommonDialog1.Filename, "", ""
     
+    'Or a static implementation
+    'VUI.DownloadFile (AppPath + "Microsoft.pdf"),"",""
+    
+    
 End Sub
 
 'Fires after a Download is finished
