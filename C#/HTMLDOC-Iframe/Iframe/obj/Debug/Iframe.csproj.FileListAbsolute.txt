@@ -1,0 +1,10 @@
+C:\WORK\GitHub\myOwn\Iframe\Iframe\bin\Debug\Iframe.exe.config
+C:\WORK\GitHub\myOwn\Iframe\Iframe\bin\Debug\Iframe.exe
+C:\WORK\GitHub\myOwn\Iframe\Iframe\bin\Debug\Iframe.pdb
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.csproj.AssemblyReference.cache
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.Form1.resources
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.Properties.Resources.resources
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.csproj.GenerateResource.cache
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.exe
+C:\WORK\GitHub\myOwn\Iframe\Iframe\obj\Debug\Iframe.pdb

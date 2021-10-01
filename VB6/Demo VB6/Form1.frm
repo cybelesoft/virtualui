@@ -126,6 +126,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'Private VirtualUI As New ThinfinityVirtualUI
     Dim VUI As Variant
+    
+    
 Private Sub cmdClear_Click()
 txtShow.Text = ""
 End Sub
