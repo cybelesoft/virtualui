@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SetClipboard
+</name>
+</assembly>
+<members>
+<member name="T:SetClipboard.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SetClipboard.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SetClipboard.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:SetClipboard.Cybele.Thinfinity.BrowserInfo.SelectedRule">
+ <summary>
+ \Returns the selected Browser Rule.
+ </summary>
+</member>
+<member name="P:SetClipboard.Cybele.Thinfinity.BrowserInfo.ExtraData">
+ <summary>
+ \Returns aditional data from Browser (JSON format).
+ </summary>
+</member>
+<member name="M:SetClipboard.Cybele.Thinfinity.BrowserInfo.GetExtraDataValue(System.String)">
+ <summary>
+ \Returns a specific value from ExtraData by it's name.
+ </summary>
+ <param name="Name">Name of value to return.</param>
+</member>
+</members>
+</doc>
