@@ -1,0 +1,10 @@
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\bin64\RemotePrinterDemoNet.exe.config
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\bin64\RemotePrinterDemoNet.exe
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\bin64\RemotePrinterDemoNet.pdb
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.csproj.AssemblyReference.cache
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.MainForm.resources
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.Properties.Resources.resources
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.csproj.GenerateResource.cache
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.exe
+C:\WORK\GitHub\dev-demos\VCLib\RemotePrinterSDK\RemotePrinterSDK.virtualui.64\demos\RemotePrinterDemoNet\obj\Debug\RemotePrinterDemoNet.pdb
