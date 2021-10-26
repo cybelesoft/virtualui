@@ -29,7 +29,7 @@ namespace JSRO_Copy_Paste
             ro.Events.Add("JsROCopy");
             ro.Events.Add("JsROPaste");
 
-            ro.Properties.Add("writeText").AsString = textBox1.Text;
+            ro.Properties.Add("writeText").AsString = "";
 
             ro.Properties.Add("readText").AsString = "";
 
@@ -42,6 +42,7 @@ namespace JSRO_Copy_Paste
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ro.Properties["writeText"].AsString = textBox1.Text;
             ro.Events["JsROCopy"].Fire();
         }
 
