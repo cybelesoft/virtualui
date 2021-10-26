@@ -1,4 +1,4 @@
-Inside \SetClipboardCSharp\web you'll find 2 different files : 
+Inside \JSRO Copy Paste\web you'll find 2 different files : 
 
 
 app.html.append.txt
