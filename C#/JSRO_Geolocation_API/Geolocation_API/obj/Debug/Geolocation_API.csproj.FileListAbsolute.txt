@@ -1,0 +1,9 @@
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\bin\Debug\Geolocation_API.exe
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\bin\Debug\Geolocation_API.exe.config
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\bin\Debug\Geolocation_API.pdb
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\obj\Debug\Geolocation_API.Form1.resources
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\obj\Debug\Geolocation_API.Properties.Resources.resources
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\obj\Debug\Geolocation_API.csproj.GenerateResource.cache
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\obj\Debug\Geolocation_API.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\obj\Debug\Geolocation_API.exe
+C:\WORK\GitHub\myOwn\Geolocation_API\Geolocation_API\obj\Debug\Geolocation_API.pdb
