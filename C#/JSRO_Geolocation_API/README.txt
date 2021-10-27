@@ -10,5 +10,5 @@ You'll need to modify the app.html file in C:\Program Files\Thinfinity\VirtualUI
 <script src="<%=@BASEURL%>js/geolocation.js" type="text/javascript"></script>	
 
 
-You'll also need to move the clphandler.js file to C:\Program Files\Thinfinity\VirtualUI\web\js 
+You'll also need to move the geolocation.js file to C:\Program Files\Thinfinity\VirtualUI\web\js 
 
