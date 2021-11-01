@@ -31,6 +31,19 @@ jsro.on('ro', 'JsROPaste', function () {
 
 });
 
+jsro.on('ro', 'fullscreen', function () {
+
+	let elem = document.getElementById("virtualui");
+	
+	if (!document.fullscreenElement) {
+    elem.requestFullscreen().catch(err => {
+      alert("Error attempting to enable full-screen mode: ${err.message} (${err.name})");
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+
 
 async function getClipboardContents() {
 try {

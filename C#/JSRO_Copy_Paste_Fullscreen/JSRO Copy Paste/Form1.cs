@@ -33,6 +33,8 @@ namespace JSRO_Copy_Paste
 
             ro.Properties.Add("readText").AsString = "";
 
+            ro.Events.Add("enterFullscreen");
+
             ro.OnPropertyChange += ro_OnPropertyChange;
 
             ro.ApplyModel();
@@ -85,5 +87,9 @@ namespace JSRO_Copy_Paste
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ro.Events["fullscreen"].Fire();
+        }
     }
 }
