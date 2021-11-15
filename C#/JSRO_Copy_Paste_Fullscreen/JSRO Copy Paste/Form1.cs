@@ -24,6 +24,8 @@ namespace JSRO_Copy_Paste
             vui.Start();
             InitializeComponent();
 
+
+            //https://files.cybelesoft.com/manuals/symbolreference/index.html?00318.html
             ro = new JSObject("ro");
 
             ro.Events.Add("JsROCopy");
@@ -37,6 +39,7 @@ namespace JSRO_Copy_Paste
 
             ro.OnPropertyChange += ro_OnPropertyChange;
 
+            //https://files.cybelesoft.com/manuals/symbolreference/index.html?00313.html
             ro.ApplyModel();
 
         }
