@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tel-URI-Scheme-Demo", "Tel-URI-Scheme-Demo\Tel-URI-Scheme-Demo.csproj", "{A02DE42A-D6BA-41A3-A64C-D91BFD826411}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A02DE42A-D6BA-41A3-A64C-D91BFD826411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02DE42A-D6BA-41A3-A64C-D91BFD826411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02DE42A-D6BA-41A3-A64C-D91BFD826411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02DE42A-D6BA-41A3-A64C-D91BFD826411}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECC39954-A409-4B64-B551-AD007615D35F}
+	EndGlobalSection
+EndGlobal
