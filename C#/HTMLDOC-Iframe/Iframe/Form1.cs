@@ -40,17 +40,31 @@ namespace Iframe
 
             string Url = textBox1.Text;
 
+            //Creates the iframe on the browser side
             vui.HTMLDoc.CreateComponent("browser1", "<iframe id='myIframe' style=margin:0;padding:0;border:none;width:100%;height:100%;background-color:white src=" + Url + "></iframe>", panel1.Handle);
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
             RemoteBrowser.Properties["url"].AsString = textBox1.Text;
+            //Fires jsro.on('browser1', "go", function (url)
+            RemoteBrowser.Events["go"].Fire();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Creates a URL that publishes the file
+            string mySafeUrl = vui.HTMLDoc.GetSafeUrl(AppDomain.CurrentDomain.BaseDirectory+"\\big_buck_bunny_480p_2mb.mp4");
+
+
+            RemoteBrowser.Properties["url"].AsString = mySafeUrl;
 
             RemoteBrowser.Events["go"].Fire();
 
+        
         }
     }
 }
