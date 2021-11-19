@@ -62,6 +62,7 @@ namespace Iframe
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(125, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 23);
@@ -72,6 +73,7 @@ namespace Iframe
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(489, 22);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 23);
