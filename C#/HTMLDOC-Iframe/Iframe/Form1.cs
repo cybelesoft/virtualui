@@ -15,6 +15,7 @@ namespace Iframe
     {
 
         VirtualUI vui;
+        public JSObject RemoteBrowser;
 
         public Form1()
         {
@@ -23,20 +24,33 @@ namespace Iframe
             vui.Start();
             vui.AllowExecute(".+");
 
+            RemoteBrowser = new JSObject("browser1");
+            RemoteBrowser.Properties.Add("url").AsString = "";
+            RemoteBrowser.Events.Add("go");
+            RemoteBrowser.ApplyModel();
+
+
             InitializeComponent();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             string Url = textBox1.Text;
 
-            // CreateForwarding acts as a Reverse Proxy . For acessing internal resources from outside your LAN
-            //string myForward = vui.HTMLDoc.CreateForwarding(Url);
-            vui.HTMLDoc.CreateComponent(
-                
-                "iframe1",
-                "<iframe style=margin:0;padding:0;border:none;width:100%;height:100%;background-color:white src=" + Url + "></iframe>", 
-                panel1.Handle);
+            vui.HTMLDoc.CreateComponent("browser1", "<iframe id='myIframe' style=margin:0;padding:0;border:none;width:100%;height:100%;background-color:white src=" + Url + "></iframe>", panel1.Handle);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            RemoteBrowser.Properties["url"].AsString = textBox1.Text;
+
+            RemoteBrowser.Events["go"].Fire();
+
         }
     }
 }
