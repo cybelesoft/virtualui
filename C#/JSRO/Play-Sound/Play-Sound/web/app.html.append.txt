@@ -1,0 +1,2 @@
+<!-- Add this line in app.html after app.js --> 	
+<script src="<%=@BASEURL%>js/beepPlay.js" type="text/javascript"></script>

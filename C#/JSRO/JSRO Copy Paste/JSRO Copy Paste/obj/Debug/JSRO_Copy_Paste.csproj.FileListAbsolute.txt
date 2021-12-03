@@ -1,0 +1,30 @@
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.exe
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.pdb
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.exe.config
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.Form1.resources
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.Properties.Resources.resources
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.GenerateResource.cache
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\obj\Debug\JSRO Copy Paste.exe
+C:\WORK\GitHub\myOwnOLD\JSRO_Copy_Paste\JSRO Copy Paste\obj\Debug\JSRO Copy Paste.pdb
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.exe.config
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.exe
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.pdb
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.AssemblyReference.cache
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.Form1.resources
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.Properties.Resources.resources
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.GenerateResource.cache
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.CoreCompileInputs.cache
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO Copy Paste.exe
+D:\GitHub\myOwn\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO Copy Paste.pdb
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.exe.config
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.exe
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\bin\Debug\JSRO Copy Paste.pdb
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.SuggestedBindingRedirects.cache
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.Form1.resources
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.Properties.Resources.resources
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.GenerateResource.cache
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.CoreCompileInputs.cache
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO Copy Paste.exe
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO Copy Paste.pdb
+C:\GitHub\myOwn\myOwn\JSRO\JSRO Copy Paste\JSRO Copy Paste\obj\Debug\JSRO_Copy_Paste.csproj.AssemblyReference.cache

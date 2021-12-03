@@ -1,0 +1,10 @@
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\bin\Debug\Play-Sound.exe.config
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\bin\Debug\Play-Sound.exe
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\bin\Debug\Play-Sound.pdb
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play-Sound.csproj.AssemblyReference.cache
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play_Sound.Form1.resources
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play_Sound.Properties.Resources.resources
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play-Sound.csproj.GenerateResource.cache
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play-Sound.csproj.CoreCompileInputs.cache
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play-Sound.exe
+C:\WORK\GitHub\myOwn\Play-Sound\Play-Sound\obj\Debug\Play-Sound.pdb

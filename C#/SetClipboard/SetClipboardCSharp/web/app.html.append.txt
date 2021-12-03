@@ -1,2 +1,0 @@
-<!-- Add this line in app.html after app.js --> 	
-<script src="<%=@BASEURL%>js/clphandler.js" type="text/javascript"></script>
