@@ -14,7 +14,7 @@ namespace JSRO_Copy_Paste
 {
     public partial class Form1 : Form
     {
-
+        private string webDir;
         VirtualUI vui;
         JSObject ro;
 
@@ -58,12 +58,26 @@ namespace JSRO_Copy_Paste
             //Applies model to the browser
             ro.ApplyModel();
 
+            GetWebDir();
 
-            
+            vui.HTMLDoc.CreateSessionURL("/web/", webDir);
+            vui.HTMLDoc.LoadScript("web/clphandler.js");
+
+
 
         }
 
-
+        private void GetWebDir()
+        {
+            webDir = AppDomain.CurrentDomain.BaseDirectory;
+            DirectoryInfo di = new DirectoryInfo(webDir);
+            while (di != null)
+            {
+                webDir = di.FullName + @"\web\";
+                if (Directory.Exists(webDir)) return;
+                di = di.Parent;
+            }
+        }
 
         //Fires the 'JsROCopy' event in clphandler.js
         private void button1_Click(object sender, EventArgs e)

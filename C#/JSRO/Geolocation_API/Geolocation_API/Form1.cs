@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Cybele.Thinfinity;
 
@@ -13,7 +14,7 @@ namespace Geolocation_API
 {
     public partial class Form1 : Form
     {
-
+        private string webDir;
         VirtualUI vui;
         JSObject ro;
 
@@ -33,7 +34,26 @@ namespace Geolocation_API
             ro.Events.Add("getGeoLocation");
 
             ro.OnPropertyChange += ro_OnPropertyChange;
+            ro.ApplyModel();
 
+
+            GetWebDir();
+
+            vui.HTMLDoc.CreateSessionURL("/web/", webDir);
+            vui.HTMLDoc.LoadScript("web/geolocation.js");
+
+        }
+
+        private void GetWebDir()
+        {
+            webDir = AppDomain.CurrentDomain.BaseDirectory;
+            DirectoryInfo di = new DirectoryInfo(webDir);
+            while (di != null)
+            {
+                webDir = di.FullName + @"\web\";
+                if (Directory.Exists(webDir)) return;
+                di = di.Parent;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
