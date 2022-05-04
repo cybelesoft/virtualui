@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Thinfinity VirtualUI JsRO Development</title>
+    <!-- Thinfinity.JSMinified combine="no" compress="no" -->
+    <script src="/common/jquery/jquery.js" type="text/javascript"></script>
+    <script src="/common/js/global.variables.js" type="text/javascript"></script>
+    <!-- Thinfinity.JSMinified name="vui.consts" combine="true" compress="true" -->
+    <script src="/common/js/consts.js" type="text/javascript"></script>
+    <script src="/js/webfmx.consts.js" type="text/javascript"></script>
+    <!-- Thinfinity.JSMinified name="jsro" combine="true" compress="true" -->
+    <script src="/common/jquery/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="/common/jquery/jquery.ajaxq.js" type="text/javascript"></script>
+    <script src="/common/jquery/jquery.base64.js" type="text/javascript"></script>
+    <script src="/common/js/browser.compatibility.js" type="text/javascript"></script>
+    <script src="/common/js/polyfills.js" type="text/javascript"></script>
+    <script src="/common/js/agentinfo.js" type="text/javascript"></script>
+    <script src="/common/js/helper.js" type="text/javascript"></script>
+    <script src="/common/js/environment.js" type="text/javascript"></script>
+    <script src="/common/js/observe.js" type="text/javascript"></script>
+    <script src="/common/js/thinfinity.observe.model.js" type="text/javascript"></script>
+    <script src="/common/js/thinfinity.postmessage.js" type="text/javascript"></script>
+    <script src="/common/js/thinfinity.linkageconnection.js" type="text/javascript"></script>
+    <script src="/common/js/thinfinity.jsro.js" type="text/javascript"></script>
+</head>
+<body style="background-color:#cecece;width:100%;height:100%;">
+    <script type="text/javascript">
+        var jsro = null;		
+        helper.dom.ready(function () {
+            jsro = new Thinfinity.JsRO({});
+            jsro.on("model:*","created", function (e) {
+                // -- TODO;				
+            });
+			jsro.on('model:*', 'changed', function (prop) {				
+				if (prop.name === "color"){ 
+					// -- The property was updated on the back-end, then apply to local variable.
+					document.body.style.backgroundColor = prop.value;
+					// -- Update model property using the current value; (shows how to send a value to back-end again)
+					jsro.model.iframe.backgroundColor = prop.value;
+				}
+			});
+        });
+    </script>
+</body>
+</html>

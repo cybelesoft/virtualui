@@ -15,60 +15,53 @@ namespace Iframe
     {
 
         VirtualUI vui;
-        public JSObject RemoteBrowser;
-        
+        private VuiIframe vuiIframe;
 
         public Form1()
         {
+            InitializeComponent();
+            InitializeVUI();
+        }
 
+        private void InitializeVUI() {
             vui = new VirtualUI();
             vui.Start();
             vui.AllowExecute(".+");
 
-            
-
-            RemoteBrowser = new JSObject("browser1");
-            RemoteBrowser.Properties.Add("url").AsString = "";
-            RemoteBrowser.Events.Add("go");
-            RemoteBrowser.ApplyModel();
-
-
-            InitializeComponent();
-
-
+            vuiIframe = new VuiIframe();
+            vuiIframe.OnBackgroundColorChanged += VuiIframe_OnBackgroundColorChanged;
+            vuiIframe.CreateComponent(iframe, vui);
+            vuiIframe.src = txtSrc.Text;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void VuiIframe_OnBackgroundColorChanged(object sender, EventArgs e)
         {
-
-            string Url = textBox1.Text;
-
-            //Creates the iframe on the browser side, with id "myIframe". This is used to handle the iframe on a JS side.
-            //https://files.cybelesoft.com/manuals/symbolreference/index.html?00293.html
-            vui.HTMLDoc.CreateComponent("browser1", "<iframe id='myIframe' style=margin:0;padding:0;border:none;width:100%;height:100%;background-color:white src=" + Url + "></iframe>", panel1.Handle);
-            button2.Enabled = true;
-            button3.Enabled = true;
+            controlInvokerText(txtColor, vuiIframe.color);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnGo_Click(object sender, EventArgs e)
         {
-            
-            RemoteBrowser.Properties["url"].AsString = textBox1.Text;
-            //Fires jsro.on('browser1', "go", function (url)
-            RemoteBrowser.Events["go"].Fire();
-
+            vuiIframe.src = txtSrc.Text;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSetColor_Click(object sender, EventArgs e)
         {
-            //Creates a URL that publishes a file
-            //https://files.cybelesoft.com/manuals/symbolreference/index.html?00118.html
-            string mySafeUrl = vui.HTMLDoc.GetSafeUrl(AppDomain.CurrentDomain.BaseDirectory+"\\big_buck_bunny_480p_2mb.mp4");
+            ColorDialog MyDialog = new ColorDialog();
+            if (MyDialog.ShowDialog() == DialogResult.OK) {
+                vuiIframe.color = "rgb(" + MyDialog.Color.R.ToString() + "," + MyDialog.Color.G.ToString() + "," + MyDialog.Color.B.ToString()+")";
+            }
+        }
 
-            RemoteBrowser.Properties["url"].AsString = mySafeUrl;
-
-            RemoteBrowser.Events["go"].Fire();
-
+        private void controlInvokerText(Control c, String text)
+        {
+            if (c.InvokeRequired)
+            {
+                c.Invoke(new MethodInvoker(delegate { c.Text = text; }));
+            }
+            else
+            {
+                c.Text = text;
+            }
         }
     }
 }
