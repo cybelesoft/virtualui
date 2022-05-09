@@ -20,9 +20,12 @@ namespace Iframe
         {
             m_Xtagdir = AppDomain.CurrentDomain.BaseDirectory;
             DirectoryInfo di = new DirectoryInfo(m_Xtagdir);
-            while (di != null)
+            String sdi = di.FullName.ToString();
+            if (sdi.EndsWith("\\")) sdi = sdi.Substring(0, sdi.Length - 1);
+            while (sdi != null)
             {
-                m_Xtagdir = di.FullName + @"\x-tag\";
+                m_Xtagdir = sdi + @"\x-tag\";
+                MessageBox.Show(m_Xtagdir);
                 if (Directory.Exists(m_Xtagdir)) return;
                 di = di.Parent;
             }
@@ -55,6 +58,7 @@ namespace Iframe
         public event EventHandler<EventArgs> OnBackgroundColorChanged;
         public void CreateComponent(Control ctrl, VirtualUI vuiInstance) {
             vui = vuiInstance;
+            MessageBox.Show(m_Xtagdir);
             vui.HTMLDoc.CreateSessionURL("/x-tag/", m_Xtagdir);
             vui.HTMLDoc.LoadScript(@"/x-tag/x-tag-core.min.js");
             vui.HTMLDoc.ImportHTML(@"/x-tag/vui-iframe.html");

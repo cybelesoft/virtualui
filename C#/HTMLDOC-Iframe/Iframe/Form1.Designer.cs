@@ -33,10 +33,10 @@ namespace Iframe
             this.txtSrc = new System.Windows.Forms.TextBox();
             this.btnGo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnSetColor = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtColor = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSetColor = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@ namespace Iframe
             this.txtSrc.Name = "txtSrc";
             this.txtSrc.Size = new System.Drawing.Size(821, 20);
             this.txtSrc.TabIndex = 2;
-            this.txtSrc.Text = "/x-tag/jsro_iframe.html";
+            this.txtSrc.Text = "x-tag/jsro_iframe.html";
             // 
             // btnGo
             // 
@@ -80,14 +80,22 @@ namespace Iframe
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Controls";
             // 
-            // label1
+            // txtColor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "URL:";
+            this.txtColor.Enabled = false;
+            this.txtColor.Location = new System.Drawing.Point(94, 60);
+            this.txtColor.Name = "txtColor";
+            this.txtColor.Size = new System.Drawing.Size(94, 20);
+            this.txtColor.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Current Color:";
             // 
             // btnSetColor
             // 
@@ -99,22 +107,14 @@ namespace Iframe
             this.btnSetColor.UseVisualStyleBackColor = true;
             this.btnSetColor.Click += new System.EventHandler(this.btnSetColor_Click);
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Current Color:";
-            // 
-            // txtColor
-            // 
-            this.txtColor.Enabled = false;
-            this.txtColor.Location = new System.Drawing.Point(94, 60);
-            this.txtColor.Name = "txtColor";
-            this.txtColor.Size = new System.Drawing.Size(94, 20);
-            this.txtColor.TabIndex = 9;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "URL:";
             // 
             // Form1
             // 
