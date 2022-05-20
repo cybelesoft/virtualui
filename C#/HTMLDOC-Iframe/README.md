@@ -4,7 +4,9 @@ This demo shows how to programatically create an iframe inside your application 
 The demo is composed of 3 different parts: 
 
   . The 'backend' application with the Vuiframe class ( Vuiframe.cs ). **(Required)**
+  
   . The JSRO running in the VirtualUI tab ( vui-frame.html and vui-frame.js ). **(Required)**
+  
   . The JSRO running in the web application inside the iframe ( jsro_iframe.html ). (Optional)
   
   
