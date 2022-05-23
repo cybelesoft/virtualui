@@ -13,25 +13,36 @@ The demo is composed of 3 different parts:
 
 **Vuiframe.cs**
       
-    vui.HTMLDoc.CreateSessionURL("/x-tag/", m_Xtagdir); _ //  Creates an url pointing to a local filename. This url is valid during the session lifetime and its private to this session._
+    vui.HTMLDoc.CreateSessionURL("/x-tag/", m_Xtagdir); 
+    
+_Creates an url pointing to a local filename. This url is valid during the session lifetime and its private to this session._
+      
+      
       
     vui.HTMLDoc.LoadScript(@"/x-tag/x-tag-core.min.js"); 
 
-Loads a script from url into VirtualUI's app.html . This is useful if you want to programatically add more .js files to the app.html withouth having to modify it by hand
+_Loads a script from url into VirtualUI's app.html . This is useful if you want to programatically add more .js files to the app.html withouth having to modify it by hand_
+ 
+ 
  
     vui.HTMLDoc.ImportHTML(@"/x-tag/vui-iframe.html"); 
     
-Same as LoadScript but with HTML files_
+_Same as LoadScript but with HTML files_
+    
+    
     
     
     vui.HTMLDoc.CreateComponent(ctrl.Name, "vui-iframe", ctrl.Handle);
     
-Inserts HTML elemtents to the app.html , the .html file where the app is running . Used to insert regular HTML elements or WebComponents with custom elements. 
+_Inserts HTML elemtents to the app.html , the .html file where the app is running . Used to insert regular HTML elements or WebComponents with custom elements. _
 
-This creates the iframe where we will call the 'jsro_iframe.html' file
+_This creates the iframe where we will call the 'jsro_iframe.html' file_
+    
     
      
-Javascript Remote Objects methods, events and properties. These will be used for communicating 'color' and 'backgroundColor' back and forth.
+**Javascript Remote Objects methods, events and properties.** 
+
+These will be used for communicating 'color' and 'backgroundColor' back and forth.
 
     // -- The given name, is how the model shown this object in the model reference.
     m_iframe = new JSObject(ctrl.Name);
@@ -45,6 +56,36 @@ Javascript Remote Objects methods, events and properties. These will be used for
      
      
 **vuiframe.html / vuiframe.js
+
+
+
+    function startJsRO(controlId) {
+        jsro = new Thinfinity.JsRO();
+
+        // -- Properties
+        jsro.on('model:' + controlId + '.src', 'changed', function (src) {
+            if (src.value != '') iframe.src = src.value;
+        });
+
+        jsro.on('model:' + controlId + '.color', 'changed', function (color) {
+            console.log(`new assigned color: ${color.value}`);
+        });
+    }
+
+__
+
+
+    xtag.register('vui-iframe', {
+        'content': style + '<iframe src=""><iframe>',
+        'lifecycle': {
+            'inserted': function () {
+                iframe = this.querySelector("iframe");
+                startJsRO(this.id);
+            }
+        }
+    });
+
+
  
  
 **jsro_iframe.html**
