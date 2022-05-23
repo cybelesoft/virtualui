@@ -57,7 +57,7 @@ These will be used for communicating 'color' and 'backgroundColor' back and fort
      
 **vuiframe.html / vuiframe.js **
 
-
+The startJsRo(controlId) method initiates the JSRO connection with VirtualUI .
 
     function startJsRO(controlId) {
         jsro = new Thinfinity.JsRO();
@@ -72,8 +72,8 @@ These will be used for communicating 'color' and 'backgroundColor' back and fort
         });
     }
 
-__
-
+ 
+We use the xtag.register method to start call the startJsRO method : 
 
     xtag.register('vui-iframe', {
         'content': style + '<iframe src=""><iframe>',
