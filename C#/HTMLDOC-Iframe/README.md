@@ -93,4 +93,19 @@ We use the xtag.register method to start call the startJsRO method :
    This example shows how Javascript Remote Objects needs to be called in the destination website, if you want to communicate back and forth to the Thinfinity Application. 
    
   
+          var jsro = null;		
+        helper.dom.ready(function () {
+            jsro = new Thinfinity.JsRO({});
+            jsro.on("model:*","created", function (e) {
+                // -- TODO;				
+            });
+			jsro.on('model:*', 'changed', function (prop) {				
+				if (prop.name === "color"){ 
+					// -- The property was updated on the back-end, then apply to local variable.
+					document.body.style.backgroundColor = prop.value;
+					// -- Update model property using the current value; (shows how to send a value to back-end again)
+					jsro.model.iframe.backgroundColor = prop.value;
+				}
+			});
+        });
 
