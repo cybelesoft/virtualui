@@ -1,0 +1,11 @@
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\bin\Debug\JSROTest.exe.config
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\bin\Debug\JSROTest.exe
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\bin\Debug\JSROTest.pdb
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.csproj.AssemblyReference.cache
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.csproj.SuggestedBindingRedirects.cache
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.Form1.resources
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.Properties.Resources.resources
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.csproj.GenerateResource.cache
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.csproj.CoreCompileInputs.cache
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.exe
+C:\GitHub\myOwn\VB.Net\JSROTest\JSROTest\obj\Debug\JSROTest.pdb
