@@ -38,6 +38,7 @@ namespace ExtAuth.IniFiles
             string lpFileName = CurrentAssemblyDirectory().Remove(0, 6);
             lpFileName = Path.GetDirectoryName(lpFileName);
             lpFileName = Path.GetDirectoryName(lpFileName);
+            lpFileName = Path.GetDirectoryName(lpFileName);
             lpFileName = lpFileName + @"\IniFile\AllowedUsers.ini";
 
             // Read the stored password for the requested user
