@@ -21,6 +21,8 @@ helper.dom.ready(function () {
 	recognition.lang = 'en-US';
 	recognition.interimResults = false;
 	recognition.maxAlternatives = 1;
+	// Speech Recognition Ends
+	
 
 	// Used when 'sendVibration' is fired
 	// URL has to be added to web-headers.json
@@ -151,7 +153,7 @@ helper.dom.ready(function () {
     });
 	
 	
-	
+	//Speech recognition result
 	recognition.onresult = function(event) {
 		ro.speechRecognition = event.results[0][0].transcript;
 		console.log(event.results[0][0].transcript);
