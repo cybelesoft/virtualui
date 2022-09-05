@@ -1,0 +1,10 @@
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\bin\Debug\VB.Net.dll
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\bin\Debug\VB.Net.pdb
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\bin\Debug\VB.Net.xml
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.vbproj.AssemblyReference.cache
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.Resources.resources
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.vbproj.GenerateResource.cache
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.vbproj.CoreCompileInputs.cache
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.dll
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.xml
+C:\GitHub\virtualui\Authentication\ExternalAuthentication\VB.Net\EldoradoVUIAuthentication\obj\Debug\VB.Net.pdb

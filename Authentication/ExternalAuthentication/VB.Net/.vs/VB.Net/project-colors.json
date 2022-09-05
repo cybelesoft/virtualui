@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b13b71fd-16c6-4a9e-9a68-d8ccd6916b2a": {
+      "ProjectGuid": "b13b71fd-16c6-4a9e-9a68-d8ccd6916b2a",
+      "DisplayName": "VB.Net",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
